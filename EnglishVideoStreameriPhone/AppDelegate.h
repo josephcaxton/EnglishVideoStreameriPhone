@@ -1,17 +1,50 @@
 //
 //  AppDelegate.h
-//  EnglishVideoStreameriPhone
+//  MathsVideoStreameriPhone
 //
-//  Created by Joseph caxton-Idowu on 11/06/2012.
+//  Created by Joseph caxton-Idowu on 30/05/2012.
 //  Copyright (c) 2012 caxtonidowu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate,NSXMLParserDelegate>{
+    
+    NSThread *SecondThread;
+    UIWindow *window;
+    UITabBarController *tabBarController;
+    NSString *SelectProductID;
+    UITableViewController *buyScreen;
+    NSString *DomainName;
+    NSMutableData *SubscriptionStatusData;
+    NSMutableArray *TempSubscibedProducts;
+    //NSMutableArray *SubscibedProducts;
+    BOOL PassageFlag;
+    NSString *UserEmail;
+    BOOL EmailFlag;
+    BOOL AccessAll;
+}
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
 
-@property (strong, nonatomic) UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) NSThread *SecondThread;
+@property (nonatomic, retain) NSString *SelectProductID;
+@property (nonatomic, retain) UITableViewController *buyScreen;
+@property (nonatomic, retain) NSString *DomainName;
+@property (nonatomic, retain)  NSMutableData *SubscriptionStatusData;
+@property (nonatomic, retain) NSMutableArray *TempSubscibedProducts;
+//@property (nonatomic, retain) NSMutableArray *SubscibedProducts;
+@property (nonatomic, assign) BOOL PassageFlag;
+@property (nonatomic, retain) NSString *UserEmail;
+@property (nonatomic, assign) BOOL EmailFlag;
+@property (nonatomic, assign) BOOL AccessAll;
+- (NSString *)applicationDocumentsDirectory;
+-(BOOL)isDeviceConnectedToInternet;
+- (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;
+- (NSString *)GetUUID;
+-(void)SubscriptionStatus:(NSString *)DeviceID;
+//-(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray;
 
 @end
+
