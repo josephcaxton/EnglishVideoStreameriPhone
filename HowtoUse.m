@@ -31,7 +31,7 @@
 	self.WebBox.delegate = self;
 	
 	
-	[self loadDocument:@"HowtouseVideoStreamer_iphone" inView:self.WebBox];
+	[self loadDocument:@"HowtouseVideoStreamer" inView:self.WebBox];
 	[self.view addSubview:WebBox];
 	
 }
