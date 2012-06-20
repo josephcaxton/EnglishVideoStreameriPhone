@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
 
 @interface AppDelegate : NSObject <UIApplicationDelegate,NSXMLParserDelegate>{
     
@@ -23,6 +24,11 @@
     NSString *UserEmail;
     BOOL EmailFlag;
     BOOL AccessAll;
+    
+    // this is to handle return from facebook
+    
+    Facebook *m_facebook;
+
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -39,6 +45,8 @@
 @property (nonatomic, retain) NSString *UserEmail;
 @property (nonatomic, assign) BOOL EmailFlag;
 @property (nonatomic, assign) BOOL AccessAll;
+@property (nonatomic, retain)  Facebook *m_facebook;
+
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
 - (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;

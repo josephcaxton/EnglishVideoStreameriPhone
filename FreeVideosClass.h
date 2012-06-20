@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "FBConnect.h"
+
 @interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,MFMailComposeViewControllerDelegate>{
     
     NSMutableArray *ArrayofConfigObjects;

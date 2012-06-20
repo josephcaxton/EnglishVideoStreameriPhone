@@ -25,7 +25,14 @@
     
 
     
-    self.navigationItem.title = @"www.LearnersCloud.com";
+    self.navigationItem.title = @"English from LearnersCloud";
+    
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
+    
     CGRect FirstViewframe = CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	self.FirstView = [[UIView alloc] initWithFrame:FirstViewframe];
     

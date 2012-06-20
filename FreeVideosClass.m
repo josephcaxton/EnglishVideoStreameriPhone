@@ -257,7 +257,7 @@
 		NSString *Free = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:5]];
 		NSString *Subject = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:7]];
 		NSString *M3u8 = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:9]];
-		NSString *ThumbNail = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:11]];
+		NSString *Sociallyfree = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:11]];
         NSString *ProductID = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:13]];
 		
          //if ([Show isEqualToString: @"1"]){
@@ -274,7 +274,16 @@
         }
         obj.Subject = Subject;
         obj.M3u8 = M3u8;
-        obj.Thumbnail = ThumbNail;
+        
+        if ([Sociallyfree isEqualToString: @"1"]){
+            
+            obj.SociallyFree = YES;
+        }
+        else
+        {
+            obj.SociallyFree = NO; 
+        }
+
         obj.ProductID = ProductID;
         //NSLog(@"Product is: %@",obj.ProductID);
         for (int i = 0; i < ProductsSubscibedTo.count; i++) {
@@ -344,6 +353,17 @@
          cell.detailTextLabel.textColor = [UIColor blueColor];
         
     }
+    else if ([obj SociallyFree] == YES){
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        NSString* descriptiontxt = [obj VideoDescription];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free gift if you share"];
+        cell.detailTextLabel.text =FullDesciption;
+        cell.detailTextLabel.textColor = [UIColor blueColor];
+        
+        
+    }
+
     // Is user Subscribed?
     else if([obj Subcribed] == YES || FullSubscription == TRUE){
         
@@ -391,6 +411,34 @@
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
     [self.navigationController pushViewController:VP1 animated:YES];
     }
+    
+    else if ([obj SociallyFree] == YES){
+        // Have you shared if so view video
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        if([[prefs objectForKey:@"AddOneFree"] isEqualToString:@"1"]){
+            
+            VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
+            VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
+            [self.navigationController pushViewController:VP1 animated:YES];
+            
+        }
+        
+        else {
+            
+            UIAlertView *alertView = [[UIAlertView alloc] 
+                                      initWithTitle:@"Sorry"                                                             
+                                      message:@"You can only view this video for free if you share"                                                          
+                                      delegate:self                                              
+                                      cancelButtonTitle:@"OK"                                                   
+                                      otherButtonTitles:nil];
+            [alertView show];
+            
+            return;
+            
+        }
+        
+    }
+
     else{
         // To store for buying
         //NSLog(@"my product id is %@",[obj ProductID]);
@@ -462,7 +510,7 @@
         [SendMailcontroller setToRecipients:SendTo];
         [SendMailcontroller setSubject:[NSString stringWithFormat:@"%@ English video streaming iPhone",DeviceID]];
         
-        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Additional Messages can be added to this email "] isHTML:NO];
+        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Add message here "] isHTML:NO];
         [self presentModalViewController:SendMailcontroller animated:YES];
         
 		

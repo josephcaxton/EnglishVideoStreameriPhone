@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL Free;
 @property (nonatomic, retain) NSString *Subject;
 @property (nonatomic, retain) NSString *M3u8;
-@property (nonatomic, retain) NSString *Thumbnail;
+@property (nonatomic, assign) BOOL SociallyFree;
 @property (nonatomic, retain) NSString *ProductID;
 @property (nonatomic, assign) BOOL Subcribed;
 @end
