@@ -18,6 +18,7 @@
 		7C928ABC1591D75B007784EF /* shareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C928ABB1591D75B007784EF /* shareIcon.png */; };
 		7C928ABE1591D773007784EF /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C928ABD1591D773007784EF /* 23-bird.png */; };
 		7C928AC01591DDA3007784EF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C928ABF1591DDA3007784EF /* Twitter.framework */; };
+		7CD3E6B215A1C926009F527C /* FollowUsOnTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD3E6B115A1C926009F527C /* FollowUsOnTwitter.png */; };
 		7CDA003E1585FCC70035619C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA003D1585FCC70035619C /* UIKit.framework */; };
 		7CDA00401585FCC70035619C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA003F1585FCC70035619C /* Foundation.framework */; };
 		7CDA00421585FCC70035619C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDA00411585FCC70035619C /* CoreGraphics.framework */; };
@@ -155,6 +156,7 @@
 		7C928ABB1591D75B007784EF /* shareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareIcon.png; sourceTree = "<group>"; };
 		7C928ABD1591D773007784EF /* 23-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "23-bird.png"; sourceTree = "<group>"; };
 		7C928ABF1591DDA3007784EF /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		7CD3E6B115A1C926009F527C /* FollowUsOnTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowUsOnTwitter.png; sourceTree = "<group>"; };
 		7CDA00391585FCC70035619C /* English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA003D1585FCC70035619C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7CDA003F1585FCC70035619C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -417,6 +419,7 @@
 				7C928AB51591D722007784EF /* facebook.png */,
 				7C928AB71591D730007784EF /* logoutfacebook.png */,
 				7C928AB91591D73E007784EF /* twitter.png */,
+				7CD3E6B115A1C926009F527C /* FollowUsOnTwitter.png */,
 				7C928ABB1591D75B007784EF /* shareIcon.png */,
 				7CDA00961585FF490035619C /* Default.png */,
 				7CDA00981585FF560035619C /* Default@2x.png */,
@@ -699,6 +702,7 @@
 				7C928ABA1591D73E007784EF /* twitter.png in Resources */,
 				7C928ABC1591D75B007784EF /* shareIcon.png in Resources */,
 				7C928ABE1591D773007784EF /* 23-bird.png in Resources */,
+				7CD3E6B215A1C926009F527C /* FollowUsOnTwitter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
