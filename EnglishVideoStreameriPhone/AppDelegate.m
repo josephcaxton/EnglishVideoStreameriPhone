@@ -78,6 +78,27 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
         
     }
     
+    // Review
+    
+    NSString *ReviewID = [prefs stringForKey:@"Review"];
+    if (ReviewID == nil) {
+        
+        NSString *ID = @"0";
+        [prefs setObject:ID forKey:@"Review"];
+        [prefs setObject:ID forKey:@"IHaveLeftReview"];
+        
+        [prefs synchronize];
+        
+    }
+    //for testing
+    /* NSString *ID = @"0";
+     [prefs setObject:ID forKey:@"Review"];
+     [prefs setObject:ID forKey:@"IHaveLeftReview"];
+     
+     [prefs synchronize];*/
+    
+
+    
     // Notification Service Registration
     
     NSLog(@"Registering for push notifications...");    

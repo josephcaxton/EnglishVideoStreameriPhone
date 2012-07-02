@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h> 
+#import <MediaPlayer/MediaPlayer.h>
+#import "FreeVideosClass.h"
 
 @interface VideoPlayer : UIViewController {
 
@@ -18,6 +19,7 @@
     NSURLProtectionSpace *protectionSpace;
     NSString *domain;
     UIImageView *ImageViewer1;
+    FreeVideosClass *FreeView;
     
 	
 }
@@ -28,5 +30,6 @@
 @property (nonatomic, retain) NSString *domain;
 @property (nonatomic, retain) UIImageView *ImageViewer1;
 @property (nonatomic, retain) MPMoviePlayerViewController *moviePlayerViewController;
+@property (nonatomic, retain) FreeVideosClass *FreeView;
 
 @end

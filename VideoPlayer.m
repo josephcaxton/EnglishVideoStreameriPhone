@@ -12,7 +12,7 @@
 
 @implementation VideoPlayer
 
-@synthesize VideoFileName,ServerLocation,credential,protectionSpace,domain,ImageViewer1,moviePlayerViewController;
+@synthesize VideoFileName,ServerLocation,credential,protectionSpace,domain,ImageViewer1,moviePlayerViewController,FreeView;
 
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 950
@@ -131,6 +131,29 @@
 	
 	[moviePlayerViewController.moviePlayer stop];
 	
+    // Lets ask for review after user has viewed videos 5 times
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *ReviewID = [prefs stringForKey:@"Review"];
+    NSString *IhaveReviewed = [prefs stringForKey:@"IHaveLeftReview"];
+    
+    
+    if ([ReviewID isEqualToString:@"11"] && [IhaveReviewed isEqualToString:@"0"] ) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Review this app" message:@"Do you like this app enough to leave us a review?" delegate:FreeView cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        [alertView show];
+        
+	}
+    else {
+        
+        NSInteger Counter = [ReviewID integerValue];
+        NSInteger CounterPlus = Counter + 1;
+        NSString *ID = [NSString stringWithFormat:@"%d",CounterPlus];
+        [prefs setObject:ID  forKey:@"Review"];
+        [prefs synchronize];
+        
+    }
+    
+
 	
 }
 

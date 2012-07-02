@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "FBConnect.h"
+#import "GANTracker.h"
 
-@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,MFMailComposeViewControllerDelegate>{
+@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate>{
     
     NSMutableArray *ArrayofConfigObjects;
     NSMutableArray *ProductIDs;
@@ -34,4 +35,6 @@
 -(void)RefreshTable:(NSNotification *)note;
 -(void)RefeshTable;
 -(void)AdjustProductSubscribedTo;
+
+- (void)reviewPressed;
 @end

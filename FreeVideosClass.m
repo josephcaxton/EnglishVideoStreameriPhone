@@ -408,6 +408,7 @@
     if ([obj Free] == YES || [obj Subcribed] == YES || FullSubscription == TRUE) {
         
     VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
+    VP1.FreeView = self;
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
     [self.navigationController pushViewController:VP1 animated:YES];
     }
@@ -418,6 +419,7 @@
         if([[prefs objectForKey:@"AddOneFree"] isEqualToString:@"1"]){
             
             VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
+            VP1.FreeView = self;
             VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
             [self.navigationController pushViewController:VP1 animated:YES];
             
@@ -544,6 +546,42 @@
 	
 	
 }
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1){
+        
+        [self reviewPressed];
+        
+    }
+    
+}
+
+- (void)reviewPressed {
+    
+    //Set user has reviewed.
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *ID = @"1";
+    [prefs setObject:ID forKey:@"IHaveLeftReview"];
+    
+    [prefs synchronize];
+    
+    // Report to  analytics
+    NSError *error;
+    if (![[GANTracker sharedTracker] trackEvent:@"User Sent to Review English Videos iPhone at app store"
+                                         action:@"User Sent to Review English Videos iPhone at app store"
+                                          label:@"User Sent to Review English Videos iPhone at app store"
+                                          value:1
+                                      withError:&error]) {
+        NSLog(@"error in trackEvent");
+    }
+    
+    
+    NSString *str = @"https://userpub.itunes.apple.com/WebObjects/MZUserPublishing.woa/wa/addUserReview?id=535073858&type=Purple+Software"; 
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+}
+
+
 
 
 
