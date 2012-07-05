@@ -246,7 +246,7 @@
         MFMailComposeViewController *SendMailcontroller = [[MFMailComposeViewController alloc]init];
         SendMailcontroller.mailComposeDelegate = self;
         //[SendMailcontroller setToRecipients:SendTo];
-        [SendMailcontroller setSubject:@"Get LearnersCloud app on your iPhone, iPad Tourch, or iPad"];
+        [SendMailcontroller setSubject:@"Get LearnersCloud app on your iPhone, iPod Touch, or iPad"];
         
         [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Checkout the free LearnersCloud video app. Its loaded with quality revision videos from <a href=http://itunes.apple.com/us/app/gcse-english-english-literature/id535073858?ls=1&mt=8>here at the app store</a> or do a search for LearnersCloud in the app store to view a list of all LearnersCloud apps. LearnersCloud is a top 20 winner of the BETT show award 2012. "] isHTML:YES];
         [self presentModalViewController:SendMailcontroller animated:YES];
