@@ -25,7 +25,7 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,PassageFlag,UserEmail,EmailFlag,AccessAll,m_facebook;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,UserEmail,AccessAll,m_facebook;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -140,7 +140,7 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
 
 -(void)SubscriptionStatus:(NSString *)DeviceID{
     
-    if(SubscriptionStatusData){
+   /* if(SubscriptionStatusData){
         [SubscriptionStatusData setLength:0];
     }
     
@@ -173,7 +173,43 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
     [conn start];
     if (!conn) {
         NSLog(@"error while starting the connection");
+    } */
+    
+    if(SubscriptionStatusData){
+        [SubscriptionStatusData setLength:0];
+        
+    }
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *deviceID = [prefs stringForKey:@"LCUIID"];
+    
+    NSString *AppID = @"58";   // 62 means this is English
+    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/HasCurrentSubscription",DomainName];
+    NSURL *url = [NSURL URLWithString:queryString];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&CourseID=%@&",deviceID,AppID];
+    NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
+    [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
+    unsigned long long postLength = data.length;
+    NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
+    [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
+    
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody:data];
+    
+    NSURLConnection *conn;
+    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if (!conn) {
+        NSLog(@"error while starting the connection");
     } 
+    
+    
+    
+    
+ 
     
     
     
@@ -235,7 +271,7 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
     
-    if ([elementName isEqualToString:@"ProductIdentifier"]) {
+   /* if ([elementName isEqualToString:@"ProductIdentifier"]) {
         
         PassageFlag = TRUE;
         
@@ -243,7 +279,7 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
     else if([elementName isEqualToString:@"EMail"]){
         
         EmailFlag = TRUE;
-    }
+    }*/
 }
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     
@@ -252,13 +288,13 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
     if([CleanString isEqualToString:@""]){
         
         //Do nothing
-        PassageFlag = FALSE;
-        EmailFlag = FALSE;
+        //PassageFlag = FALSE;
+        //EmailFlag = FALSE;
         return;
         
     }
     
-    if(PassageFlag == TRUE)
+    /*if(PassageFlag == TRUE)
         
     {
         NSString *SubscribedProductID = CleanString;
@@ -277,7 +313,25 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
         NSString *EmailAddress = CleanString;
         UserEmail = [NSString stringWithString:EmailAddress];
         EmailFlag = FALSE;
+    }*/
+    
+    
+    NSString *UserHasCurrentSubscription = CleanString;
+    
+    if([UserHasCurrentSubscription isEqualToString:@"True"]){ 
+        
+        AccessAll = TRUE; 
+        
     }
+    else {
+        AccessAll = FALSE;
+    }
+    
+    // NSLog(@"%@",UserHasCurrentSubscription);
+    
+
+    
+    
 }
 
 

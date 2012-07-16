@@ -30,14 +30,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Share this app";
-
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
     
-    self.navigationItem.title = @"Share this app";
+    UINavigationController *nav =self.navigationController;
+    nav.navigationBar.tintColor = [UIColor blackColor];
     
     NSError *error;
     // Report to  analytics
@@ -46,6 +41,15 @@
         NSLog(@"error in trackPageview");
     }
 
+
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    
+    
     
 }
 
@@ -246,9 +250,9 @@
         MFMailComposeViewController *SendMailcontroller = [[MFMailComposeViewController alloc]init];
         SendMailcontroller.mailComposeDelegate = self;
         //[SendMailcontroller setToRecipients:SendTo];
-        [SendMailcontroller setSubject:@"Get LearnersCloud app on your iPhone, iPod Touch, or iPad"];
+        [SendMailcontroller setSubject:@"Learn and revise GCSE English on the go - English App"];
         
-        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Checkout the free LearnersCloud video app. Its loaded with quality revision videos from <a href=http://itunes.apple.com/us/app/gcse-english-english-literature/id535073858?ls=1&mt=8>here at the app store</a> or do a search for LearnersCloud in the app store to view a list of all LearnersCloud apps. LearnersCloud is a top 20 winner of the BETT show award 2012. "] isHTML:YES];
+        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Checkout the FREE LearnersCloud Video App loaded with quality revision videos. To download this App for iPad <a href=http://itunes.apple.com/us/app/gcse-english-english-literature/id533079978?ls=1&mt=8> click here </a>. For iPhone <a href=http://itunes.apple.com/us/app/gcse-english-english-literature/id535073858?ls=1&mt=8> click here</a>. Or search LearnersCloud in your device’s App store. For loads more: www.Learnerscloud.com"] isHTML:YES];
         [self presentModalViewController:SendMailcontroller animated:YES];
         
 		
@@ -280,7 +284,7 @@
         if (![[GANTracker sharedTracker] trackEvent:@"Shared via email"
                                              action:@"Email shared"
                                               label:@"Email shared"
-                                              value:69
+                                              value:1
                                           withError:&error]) {
             NSLog(@"error in trackEvent");
         }
@@ -307,7 +311,7 @@
 
 -(void)ConnectToFaceBook {
     
-    facebook = [[Facebook alloc] initWithAppId:@"269396469833912" andDelegate:self];
+    facebook = [[Facebook alloc] initWithAppId:@"400532876670410" andDelegate:self];
     
     //Save a pointer to this object for return from facebook
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -327,7 +331,7 @@
     }
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"Hey!!!. I'm watching amazing english videos on this great new app, it really helped me and i hope it helps you too. You should try it out. Download it now for your iPad, iPhone and iPod Touch",  @"message",
+                                   @"I’ve just started using a new GCSE English videos App! Hundreds of quality English videos. You should check it out, or search LearnersCloud in your device’s App store.",  @"message",
                                    nil];
     
     [facebook dialog:@"apprequests"
@@ -355,7 +359,7 @@
 
 - (void) logoutButtonClicked:(id)sender {
     
-    facebook = [[Facebook alloc] initWithAppId:@"269396469833912" andDelegate:self];
+    facebook = [[Facebook alloc] initWithAppId:@"400532876670410" andDelegate:self];
     //Save a pointer to this object for return from facebook
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.m_facebook = facebook;
@@ -370,7 +374,7 @@
         [defaults synchronize];
     }
     
-    
+    [self.tableView reloadData]; 
     
 }
 
@@ -397,7 +401,7 @@
     if (![[GANTracker sharedTracker] trackEvent:@"Shared via facebook"
                                          action:@"Facebook shared"
                                           label:@"Facebook shared"
-                                          value:69
+                                          value:1
                                       withError:&error]) {
         NSLog(@"error in trackEvent");
     }
@@ -437,7 +441,7 @@
         NSString *UrlString = @"http://itunes.apple.com/us/app/gcse-english-english-literature/id535073858?ls=1&mt=8";
         
         TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
-        [tweetSheet setInitialText:@"Checkout #LearnersCloud video app. Quality english revision videos. :)"];
+        [tweetSheet setInitialText:@"Checkout @LearnersCloud #GCSE English video app. Learn and revise English on the go."];
         [tweetSheet addImage:[UIImage imageNamed:@"Icon.png"]];
         [tweetSheet addURL:[NSURL URLWithString:UrlString]];
         
@@ -456,7 +460,7 @@
                     if (![[GANTracker sharedTracker] trackEvent:@"Shared via twitter"
                                                          action:@"twitter shared"
                                                           label:@"twitter shared"
-                                                          value:69
+                                                          value:1
                                                       withError:&error]) {
                         NSLog(@"error in trackEvent");
                     }

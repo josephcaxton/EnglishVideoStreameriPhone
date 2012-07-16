@@ -46,7 +46,8 @@
         
     }*/
     
-    // If User is fully subscibed by logging in
+    // If User is fully subscibed by logging in or by identifying via DeviceID
+    
     FullSubscription = appDelegate.AccessAll;
     
     // Put all the images into an array
@@ -55,7 +56,7 @@
     int i;
     NSString *loadString;
     
-    for(i = 0; i < 57; i++) {
+    for(i = 0; i < 70; i++) {
         loadString = [NSString stringWithFormat:@"%d", i + 1]; 
         [ImageObjects addObject:[UIImage imageNamed:loadString]];
         
@@ -115,13 +116,27 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    [self AdjustProductSubscribedTo];
+    //[self AdjustProductSubscribedTo];
     
-    // Get Subscibed products from delegate
+    // Get Subscibed Status from delegate or Don't check if user is successfully logged in
     
- /*   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
-    [appDelegate SubscriptionStatus: DeviceID];*/
+    if(appDelegate.AccessAll == TRUE){
+        
+        // NSLog(@"%@",appDelegate.AccessAll);
+    }
+    else{
+        
+        // NSLog(@"%@",appDelegate.AccessAll);
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
+        
+        [appDelegate SubscriptionStatus: DeviceID];
+        
+        FullSubscription = appDelegate.AccessAll;
+        
+    }
+    
     
         
     NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"EnglishConfig_iPhone.xml"]; 
@@ -130,7 +145,7 @@
     
 }
 
--(void)AdjustProductSubscribedTo{
+/*-(void)AdjustProductSubscribedTo{
 
    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -155,7 +170,7 @@
     }
 
     
-}
+}*/
 
 
 -(void)RefreshTable:(NSNotification *)note{
@@ -166,24 +181,25 @@
 
 -(void)RefeshTable{
     
-    UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    /*UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
 	[self navigationItem].rightBarButtonItem = barButton;
-    [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
+    [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];*/
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //NSLog(@"%@", appDelegate.TempSubscibedProducts);
    
     NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"EnglishConfig_iPhone.xml"];
-    [self AdjustProductSubscribedTo];
+    //[self AdjustProductSubscribedTo];
+     FullSubscription = appDelegate.AccessAll;
      //NSLog(@"%@", appDelegate.TempSubscibedProducts);
      //NSLog(@"%@",  ProductsSubscibedTo);
     [ArrayofConfigObjects removeAllObjects];
     [self MyParser:Dir];
     [self.tableView reloadData];
     
-    [activityIndicator stopAnimating];
-    [activityIndicator hidesWhenStopped];
+    //[activityIndicator stopAnimating];
+    //[activityIndicator hidesWhenStopped];
     
 }
 
@@ -258,7 +274,8 @@
 		NSString *Subject = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:7]];
 		NSString *M3u8 = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:9]];
 		NSString *Sociallyfree = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:11]];
-        NSString *ProductID = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:13]];
+        //Reconfigure for apple approval
+        //NSString *ProductID = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:13]];
 		
          //if ([Show isEqualToString: @"1"]){
         
@@ -284,16 +301,16 @@
             obj.SociallyFree = NO; 
         }
 
-        obj.ProductID = ProductID;
+        obj.ProductID = @"English";
         //NSLog(@"Product is: %@",obj.ProductID);
-        for (int i = 0; i < ProductsSubscibedTo.count; i++) {
+        /*for (int i = 0; i < ProductsSubscibedTo.count; i++) {
             
             if ([obj.ProductID isEqualToString:[ProductsSubscibedTo objectAtIndex:i]]) {
                 
                 //NSLog(@"Product is: %@",obj.ProductID);
                 obj.Subcribed = YES;
             }
-        }
+        }*/
         
         [ArrayofConfigObjects addObject:obj];
         
@@ -357,7 +374,16 @@
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSString* descriptiontxt = [obj VideoDescription];
-        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free gift if you share"];
+        NSString* FullDesciption = @"";
+        // Check if we are in full subscription if so Change text to paid
+        if(FullSubscription == TRUE){
+            FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscription Paid"];
+        }
+        else {
+            FullDesciption = [descriptiontxt stringByAppendingString:@" - Free gift if you share"];
+        }
+        
+
         cell.detailTextLabel.text =FullDesciption;
         cell.detailTextLabel.textColor = [UIColor blueColor];
         
@@ -380,7 +406,7 @@
         
          cell.accessoryType =  UITableViewCellAccessoryNone;
           NSString* descriptiontxt = [obj VideoDescription];
-          NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Buy"];
+         NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscribe"];
          cell.detailTextLabel.text = FullDesciption;
          cell.detailTextLabel.textColor = [UIColor redColor];
     }
@@ -464,25 +490,22 @@
     
     ProductIDs = [[NSMutableArray alloc] init];
     
-    NSString* Sevendays = [ProductID stringByAppendingString:@"7days"];
-    [ProductIDs addObject:Sevendays];
-    
-   // NSLog(@"my product id for 7 days is %@",Sevendays);
-    
-    NSString* OneMonth = [ProductID stringByAppendingString:@"1month"];
+    NSString* OneMonth = [ProductID stringByAppendingString:@"iPhone1month"];
     [ProductIDs addObject:OneMonth];
     
-   /* NSString* TwoMonths = [ProductID stringByAppendingString:@"2months"];
-    [ProductIDs addObject:TwoMonths];
-    
-    NSString* ThreeMonths = [ProductID stringByAppendingString:@"3months"];
+    NSString* ThreeMonths = [ProductID stringByAppendingString:@"iPhone3months"];
     [ProductIDs addObject:ThreeMonths];
     
-    NSString* SixMonths = [ProductID stringByAppendingString:@"6months"];
+    NSString* SixMonths = [ProductID stringByAppendingString:@"iPhone6months"];
     [ProductIDs addObject:SixMonths];
     
-    NSString* OneYear = [ProductID stringByAppendingString:@"1year"];
-    [ProductIDs addObject:OneYear]; */
+    NSString* NineMonths = [ProductID stringByAppendingString:@"iPhone9months"];
+    [ProductIDs addObject:NineMonths];
+    
+    NSString* TwelveMonths = [ProductID stringByAppendingString:@"iPhone12months"];
+    [ProductIDs addObject:TwelveMonths]; 
+    
+    
 
     
     
@@ -554,6 +577,20 @@
         [self reviewPressed];
         
     }
+    
+    else {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *ReviewID = [prefs stringForKey:@"Review"];
+        NSInteger Counter = [ReviewID integerValue];
+        NSInteger CounterPlus = Counter + 1;
+        NSString *ID = [NSString stringWithFormat:@"%d",CounterPlus];
+        [prefs setObject:ID  forKey:@"Review"];
+        [prefs synchronize];
+        
+    }
+    
+    
+
     
 }
 

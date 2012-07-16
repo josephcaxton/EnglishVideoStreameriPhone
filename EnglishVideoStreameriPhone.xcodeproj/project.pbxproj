@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C1965EE15B42D8A00E912D7 /* 61.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E415B42D8A00E912D7 /* 61.png */; };
+		7C1965EF15B42D8A00E912D7 /* 62.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E515B42D8A00E912D7 /* 62.png */; };
+		7C1965F015B42D8A00E912D7 /* 63.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E615B42D8A00E912D7 /* 63.png */; };
+		7C1965F115B42D8A00E912D7 /* 64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E715B42D8A00E912D7 /* 64.png */; };
+		7C1965F215B42D8A00E912D7 /* 65.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E815B42D8A00E912D7 /* 65.png */; };
+		7C1965F315B42D8A00E912D7 /* 66.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E915B42D8A00E912D7 /* 66.png */; };
+		7C1965F415B42D8A00E912D7 /* 67.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EA15B42D8A00E912D7 /* 67.png */; };
+		7C1965F515B42D8A00E912D7 /* 68.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EB15B42D8A00E912D7 /* 68.png */; };
+		7C1965F615B42D8A00E912D7 /* 69.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EC15B42D8A00E912D7 /* 69.png */; };
+		7C1965F715B42D8A00E912D7 /* 70.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965ED15B42D8A00E912D7 /* 70.png */; };
+		7C1965FA15B42DC200E912D7 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965F915B42DC200E912D7 /* HowtouseVideoStreamer.pdf */; };
 		7C928AAB1591D38A007784EF /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C928A9E1591D38A007784EF /* FBDialog.bundle */; };
 		7C928AAC1591D38A007784EF /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C928AA41591D38A007784EF /* libfacebook_ios_sdk.a */; };
-		7C928AAF1591D3E9007784EF /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C928AAE1591D3E9007784EF /* HowtouseVideoStreamer.pdf */; };
 		7C928AB21591D6F0007784EF /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C928AB11591D6F0007784EF /* Share.m */; };
 		7C928AB41591D713007784EF /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C928AB31591D713007784EF /* mail.png */; };
 		7C928AB61591D722007784EF /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C928AB51591D722007784EF /* facebook.png */; };
@@ -132,6 +142,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C1965E415B42D8A00E912D7 /* 61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 61.png; sourceTree = "<group>"; };
+		7C1965E515B42D8A00E912D7 /* 62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 62.png; sourceTree = "<group>"; };
+		7C1965E615B42D8A00E912D7 /* 63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 63.png; sourceTree = "<group>"; };
+		7C1965E715B42D8A00E912D7 /* 64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64.png; sourceTree = "<group>"; };
+		7C1965E815B42D8A00E912D7 /* 65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 65.png; sourceTree = "<group>"; };
+		7C1965E915B42D8A00E912D7 /* 66.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 66.png; sourceTree = "<group>"; };
+		7C1965EA15B42D8A00E912D7 /* 67.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 67.png; sourceTree = "<group>"; };
+		7C1965EB15B42D8A00E912D7 /* 68.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 68.png; sourceTree = "<group>"; };
+		7C1965EC15B42D8A00E912D7 /* 69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 69.png; sourceTree = "<group>"; };
+		7C1965ED15B42D8A00E912D7 /* 70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 70.png; sourceTree = "<group>"; };
+		7C1965F915B42DC200E912D7 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7C928A9C1591D38A007784EF /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		7C928A9D1591D38A007784EF /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		7C928A9E1591D38A007784EF /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -147,7 +168,6 @@
 		7C928AA81591D38A007784EF /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		7C928AA91591D38A007784EF /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		7C928AAA1591D38A007784EF /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		7C928AAE1591D3E9007784EF /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7C928AB01591D6E7007784EF /* Share.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
 		7C928AB11591D6F0007784EF /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		7C928AB31591D713007784EF /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
@@ -550,8 +570,18 @@
 				7CDA012515860CC50035619C /* 58.png */,
 				7CDA012615860CC50035619C /* 59.png */,
 				7CDA012715860CC50035619C /* 60.png */,
+				7C1965E415B42D8A00E912D7 /* 61.png */,
+				7C1965E515B42D8A00E912D7 /* 62.png */,
+				7C1965E615B42D8A00E912D7 /* 63.png */,
+				7C1965E715B42D8A00E912D7 /* 64.png */,
+				7C1965E815B42D8A00E912D7 /* 65.png */,
+				7C1965E915B42D8A00E912D7 /* 66.png */,
+				7C1965EA15B42D8A00E912D7 /* 67.png */,
+				7C1965EB15B42D8A00E912D7 /* 68.png */,
+				7C1965EC15B42D8A00E912D7 /* 69.png */,
+				7C1965ED15B42D8A00E912D7 /* 70.png */,
 				7CDA00C8158601DA0035619C /* LearnersCloudTermsonapps.pdf */,
-				7C928AAE1591D3E9007784EF /* HowtouseVideoStreamer.pdf */,
+				7C1965F915B42DC200E912D7 /* HowtouseVideoStreamer.pdf */,
 			);
 			name = "Video images";
 			sourceTree = "<group>";
@@ -698,7 +728,6 @@
 				7CDA016215860CC50035619C /* 59.png in Resources */,
 				7CDA016315860CC50035619C /* 60.png in Resources */,
 				7C928AAB1591D38A007784EF /* FBDialog.bundle in Resources */,
-				7C928AAF1591D3E9007784EF /* HowtouseVideoStreamer.pdf in Resources */,
 				7C928AB41591D713007784EF /* mail.png in Resources */,
 				7C928AB61591D722007784EF /* facebook.png in Resources */,
 				7C928AB81591D730007784EF /* logoutfacebook.png in Resources */,
@@ -707,6 +736,17 @@
 				7C928ABE1591D773007784EF /* 23-bird.png in Resources */,
 				7CD3E6B215A1C926009F527C /* FollowUsOnTwitter.png in Resources */,
 				7CD6763915A1DFE50045B3C8 /* LikeUsOnFaceBook.png in Resources */,
+				7C1965EE15B42D8A00E912D7 /* 61.png in Resources */,
+				7C1965EF15B42D8A00E912D7 /* 62.png in Resources */,
+				7C1965F015B42D8A00E912D7 /* 63.png in Resources */,
+				7C1965F115B42D8A00E912D7 /* 64.png in Resources */,
+				7C1965F215B42D8A00E912D7 /* 65.png in Resources */,
+				7C1965F315B42D8A00E912D7 /* 66.png in Resources */,
+				7C1965F415B42D8A00E912D7 /* 67.png in Resources */,
+				7C1965F515B42D8A00E912D7 /* 68.png in Resources */,
+				7C1965F615B42D8A00E912D7 /* 69.png in Resources */,
+				7C1965F715B42D8A00E912D7 /* 70.png in Resources */,
+				7C1965FA15B42DC200E912D7 /* HowtouseVideoStreamer.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
