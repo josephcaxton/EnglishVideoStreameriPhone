@@ -12,7 +12,7 @@
 
 @implementation CustomStoreObserver
 
-@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,FinalProductID,SubscriptionInDays,TransactionID,EncodedReceipt,textField;
+@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,FinalProductID,SubscriptionInDays,TransactionID,EncodedReceipt,VerificationAppID,textField;
 
 - (id) init
 
@@ -138,15 +138,15 @@
     //EncodedReceipt = [TempReceipt substringWithRange:NSMakeRange(0, [TempReceipt length]-1)];
     //NSLog(@"%@",EncodedReceipt);
     
-    if(appDelegate.UserEmail == nil){
-
-    [self AskForUserEmailAndPassword];
-    
+    //NSLog(@"%@",appDelegate.DoesUserHaveEmail);
+    if(appDelegate.DoesUserHaveEmail == FALSE){
+        
+        [self AskForUserEmailAndPassword];
+        
     }
     else {
-        
         [self SendToLearnersCloud];
-    
+        
     }
         
     //NSString* json = [NSString stringWithFormat:@"{\"receipt-data\" : \"%@\" }", EncodedReceipt];
@@ -409,9 +409,11 @@
     NSURL *url = [NSURL URLWithString:queryString];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
-        NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@",FinalProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password];
-        
-        /*NSString * encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
+    VerificationAppID = [[NSString alloc] initWithString:@"4"]; //English iPhone
+    
+    NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@&AppID=%@",FinalProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password,VerificationAppID];
+    
+    /*NSString * encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
                                                                                        NULL,
                                                                                        (__bridge_retained  CFStringRef)FullString,
                                                                                        NULL,

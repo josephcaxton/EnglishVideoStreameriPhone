@@ -23,6 +23,7 @@
     NSString *SubscriptionInDays;
     NSString *TransactionID;
     NSString *EncodedReceipt;
+    NSString *VerificationAppID;
     UITextField* textField;
     
 
@@ -39,6 +40,7 @@
 @property (nonatomic, retain) NSString *SubscriptionInDays;
 @property (nonatomic, retain)  NSString *TransactionID;
 @property (nonatomic, retain)  NSString *EncodedReceipt;
+@property (nonatomic, retain)  NSString *VerificationAppID;
 @property (nonatomic, retain)  UITextField* textField;
 
 
