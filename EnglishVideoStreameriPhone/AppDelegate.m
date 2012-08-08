@@ -339,11 +339,12 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
         NSString *UserHasEmail = CleanString;
         if([UserHasEmail isEqualToString:@"True"]){ 
             
-            DoesUserHaveEmail = TRUE; 
-            
+            //[self setDoesUserHaveEmail:TRUE]; 
+            DoesUserHaveEmail =TRUE;
         }
         else {
-            DoesUserHaveEmail = FALSE; 
+            //[self setDoesUserHaveEmail:FALSE]; 
+            DoesUserHaveEmail=FALSE;
         }
         
         
