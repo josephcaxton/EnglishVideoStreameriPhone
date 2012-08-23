@@ -8,8 +8,6 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.LearnersCloud.EnglishVideoStreameriPhone</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-72.png</string>
@@ -17,6 +15,8 @@
 		<string>Icon.png</string>
 		<string>Icon@2x.png</string>
 	</array>
+	<key>CFBundleIdentifier</key>
+	<string>com.LearnersCloud.EnglishVideoStreameriPhone</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,23 +24,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
-	<key>UISupportedInterfaceOrientations</key>
-	<array/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -50,5 +36,19 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>1.1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSMainNibFile</key>
+	<string>MainWindow</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array/>
 </dict>
 </plist>
