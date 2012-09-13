@@ -355,7 +355,9 @@
     //Change how image is loaded
     //NSString *PicLocation = [[NSString alloc] initWithFormat:@"%@",[obj Thumbnail]];
     //UIImage* theImage = [UIImage imageNamed:PicLocation];
-    UIImage* theImage =[ImageObjects objectAtIndex:indexPath.row];
+    //UIImage* theImage =[ImageObjects objectAtIndex:indexPath.row];
+    // Here i am picking up image randomly in which case i don't have to add any more images to bundle
+    UIImage* theImage =[ImageObjects objectAtIndex:arc4random() % 69];
     cell.imageView.image = theImage;
     
     cell.textLabel.text = [obj VideoTitle];
