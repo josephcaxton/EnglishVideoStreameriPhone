@@ -25,7 +25,7 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,PassageFlag,EmailFlag,UserEmail,DoesUserHaveEmail,AccessAll,m_facebook;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,PassageFlag,EmailFlag,UserEmail,DoesUserHaveEmail,AccessAll,m_facebook,DeviceScreenType;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -39,11 +39,24 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
     
     SecondThread = nil;
     DomainName = @"http://learnerscloud.com";
+    //Check phone Screen Size
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        if([UIScreen mainScreen].bounds.size.height == 568.0){
+            //This is iphone5 Screen size
+            DeviceScreenType =[[NSNumber alloc] initWithInt:1136];
+        }
+        else{
+            // This is NOT iPhone5 Screen Size
+            DeviceScreenType = [[NSNumber alloc] initWithInt:0];
+        }
+    }
     
     
-    [window addSubview: tabBarController.view];
+    
+    //[window addSubview: tabBarController.view];
+    self.window.rootViewController = tabBarController;
 	[window makeKeyAndVisible];
-   
+    
    
 
     
@@ -422,27 +435,39 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
 
 -(BOOL)isDeviceConnectedToInternet{
     
-    /*static BOOL checkNetwork = YES;
-     BOOL _isDataSourceAvailable;
-     if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
-     checkNetwork = NO; //don't cache
-     
-     Boolean success;    
-     const char *host_name = "http://www.google.com"; // my data source host name
-     
-     SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
-     SCNetworkReachabilityFlags flags;
-     success = SCNetworkReachabilityGetFlags(reachability, &flags);
-     _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
-     CFRelease(reachability);
-     }
-     
-     return _isDataSourceAvailable;
-     */
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];  
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus]; 
-    return !(networkStatus == NotReachable);
+    BOOL internetActive = NO;
+    switch (networkStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"The internet is down.");
+            
+            internetActive = NO;
+            
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            
+            internetActive = YES;
+            
+            break;
+        }
+            
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            
+            internetActive = YES;
+            
+            break;
+        }
+    }
+    return internetActive;
     
     
 }
@@ -629,6 +654,22 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [m_facebook handleOpenURL:url]; 
 }
+
+-(BOOL)IsThisiPhone5{
+    
+    if(DeviceScreenType.intValue == 1136 ){
+        
+        return YES;
+    }
+    else
+    {
+        //NSLog(@"Result %i", DeviceScreenType.intValue);
+        return NO;
+    }
+    
+}
+
+
 
 
 

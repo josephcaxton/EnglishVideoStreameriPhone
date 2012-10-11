@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Help : UITableViewController{
+@interface Help : UIViewController <UITableViewDataSource, UITableViewDelegate>{
     
     NSMutableArray *listofItems;
+    UIButton *LCButton;
+    UITableView *FirstTable;
 }
 @property (nonatomic, retain) NSMutableArray *listofItems;
+@property (nonatomic, retain) UIButton *LCButton;
+@property (nonatomic, retain) UITableView *FirstTable;
+
+- (void)WebsitebuttonPressed;
+
+
+
 
 @end

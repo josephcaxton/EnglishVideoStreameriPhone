@@ -52,24 +52,21 @@
 
 
 
+-(NSUInteger)supportedInterfaceOrientations{
+    
+    
+    return UIInterfaceOrientationMaskPortrait;
+    
+    
+}
+
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations.
     
-    // Allow Orientation of only vidoe Player.
+    return [self.selectedViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
     
-    if(self.selectedIndex == 0 && [[[self.viewControllers objectAtIndex:0] visibleViewController] isKindOfClass:[VideoPlayer class]]){
-        
-        
-        return YES;
-
-
-    }
-        
-    else
-            
-        {
-            return NO;
-        }
 }
 
 

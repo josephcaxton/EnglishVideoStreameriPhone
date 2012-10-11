@@ -66,7 +66,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 	
-
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if(appDelegate.isDeviceConnectedToInternet){
     NSError *error;
     // Report to  analytics
     if (![[GANTracker sharedTracker] trackEvent:@"Playing Video"
@@ -124,6 +126,24 @@
     
 
 }
+    else
+    {
+        NSString *message = [[NSString alloc] initWithFormat:@"Your device is not connected to the internet. You need access to the internet to stream our videos "];
+        
+        UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Important Notice"
+                                                       message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+        
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+}
+
+
+
+
 
 
 

@@ -11,7 +11,10 @@
 #import "HowtoUse.h"
 @implementation Help
 
-@synthesize listofItems;
+@synthesize listofItems,LCButton,FirstTable;
+
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 460
 
 
 - (void)viewDidLoad {
@@ -20,27 +23,66 @@
     self.navigationItem.title = @"Help";
 	listofItems = [[NSMutableArray alloc] init];
     
-    UINavigationController *nav =self.navigationController;
-    nav.navigationBar.tintColor = [UIColor blackColor];
+    
+    
+    NSString *HeaderLocation = [[NSBundle mainBundle] pathForResource:@"header_bar" ofType:@"png"];
+    UIImage *HeaderBackImage = [[UIImage alloc] initWithContentsOfFile:HeaderLocation];
+    [self.navigationController.navigationBar setBackgroundImage:HeaderBackImage forBarMetrics:UIBarMetricsDefault];
+    
+    
 	
 	// Add items to the array this is hardcoded for now .. may need to be migrated to the database
 	[listofItems addObject:@"How to use this app"];
     [listofItems addObject:@"Terms and Conditions"];
+    
+    CGRect FirstViewframe = CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.FirstTable = [[UITableView alloc] initWithFrame:FirstViewframe style:UITableViewStyleGrouped];
+    FirstTable.delegate = self;
+	FirstTable.dataSource = self;
+    FirstTable.backgroundColor = [UIColor clearColor];
+    FirstTable.backgroundView = nil;
+    NSString *BackImagePath = [[NSBundle mainBundle] pathForResource:@"back320x450" ofType:@"png"];
+	UIImage *BackImage = [[UIImage alloc] initWithContentsOfFile:BackImagePath];
+    FirstTable.backgroundColor = [UIColor colorWithPatternImage:BackImage];
+    [self.view addSubview:FirstTable];
+
 	
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [listofItems count];
+    if (section == 0) {
+        return [listofItems count];
+    }
+	else {
+        
+		return 1;
+	}
+    
+    
+    
     
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.section == 1 && indexPath.row == 0  ) {
+        return  250;
+    }
+   	
+    else
+        return 50;
+}
+
+
+
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,15 +94,40 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    
-    // Configure the cell...
-    
-    NSString *cellValue = [[NSString alloc] initWithFormat:@"%@",[listofItems objectAtIndex:indexPath.row]];
-	cell.textLabel.text = cellValue;
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
-	
+    if (indexPath.section == 0) {
+        
+        NSString *cellValue = [[NSString alloc] initWithFormat:@"%@",[listofItems objectAtIndex:indexPath.row]];
+        cell.textLabel.text = cellValue;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
+    else if (indexPath.section == 1) {
+        
+        UIView *PromoView = [[UIView alloc] init];
+        NSString *PromoImagePath = [[NSBundle mainBundle] pathForResource:@"website_promo" ofType:@"png"];
+        UIImage *PromoImage = [[UIImage alloc] initWithContentsOfFile:PromoImagePath];
+        UIImageView *PromoImageView = [[UIImageView alloc] initWithImage:PromoImage];
+        PromoImageView.frame = CGRectMake(10, 0.0, 300, 250);
+        [PromoView addSubview:PromoImageView];
+        [cell addSubview:PromoView];
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        NSString *LCImageLocation = [[NSBundle mainBundle] pathForResource:@"web_promo_btn" ofType:@"png"];
+        
+        UIImage *LCImage = [[UIImage alloc] initWithContentsOfFile:LCImageLocation];
+        
+        
+        LCButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [LCButton setImage:LCImage forState:UIControlStateNormal];
+        LCButton.frame = CGRectMake(35, 190, 250, 50);
+        [LCButton addTarget:self action:@selector(WebsitebuttonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [cell addSubview:LCButton];
+    }
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	return cell;
+
 	
 }
 
@@ -93,6 +160,12 @@
 	}
 }
 
+
+- (void)WebsitebuttonPressed {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.learnerscloud.com"]];
+    
+}
 
 
 

@@ -213,13 +213,13 @@
         
         
          
-        AlertTitle = [[NSString alloc] initWithString:@"The email address you entered is not in the right format or password is empty. Try again?"];
+        AlertTitle = @"The email address you entered is not in the right format or password is empty. Try again?";
         
     } 
     else
     {
     
-   AlertTitle = [[NSString alloc] initWithString:@"If you need to restore your subscriptions on another device, you will need to provide an email address and a password. Do you want to enter email address and a password?"];
+   AlertTitle = @"If you need to restore your subscriptions on another device, you will need to provide an email address and a password. Do you want to enter email address and a password?";
     }
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AlertTitle message:@"\n" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     alertView.tag = 1212;
@@ -230,7 +230,7 @@
 
 -(void)GetUsernameAndPassword{
     //@"If you need to restore your subscriptions on another device, please provide your email address and a password"
-    NSString *myTitle = [[NSString alloc] initWithString:@"Enter your details"];
+    NSString *myTitle = @"Enter your details";
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:myTitle message:@"\n \n \n \n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 
     	
@@ -393,8 +393,8 @@
    
     if (EmailAddress == nil || Password == nil){
        
-        EmailAddress = [NSString stringWithString:@""];
-        Password = [NSString stringWithString:@""];
+        EmailAddress = @"";
+        Password = @"";
     }
         
              
@@ -409,7 +409,7 @@
     NSURL *url = [NSURL URLWithString:queryString];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
-    VerificationAppID = [[NSString alloc] initWithString:@"4"]; //English iPhone
+    VerificationAppID = @"4"; //English iPhone
     
     NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@&AppID=%@",FinalProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password,VerificationAppID];
     

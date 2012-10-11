@@ -20,7 +20,7 @@
 #pragma mark Initialization
 
 #define SCREEN_WIDTH  320    
-#define SCREEN_HEIGHT 450
+#define SCREEN_HEIGHT 460
 
 
 - (void)viewDidLoad {
