@@ -17,10 +17,6 @@
 		7C1965F515B42D8A00E912D7 /* 68.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EB15B42D8A00E912D7 /* 68.png */; };
 		7C1965F615B42D8A00E912D7 /* 69.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EC15B42D8A00E912D7 /* 69.png */; };
 		7C1965F715B42D8A00E912D7 /* 70.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965ED15B42D8A00E912D7 /* 70.png */; };
-		7C2DDBCB15E68C070025B38B /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DDBC615E68C070025B38B /* Icon-Small-50.png */; };
-		7C2DDBCC15E68C070025B38B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DDBC715E68C070025B38B /* Icon.png */; };
-		7C2DDBCD15E68C070025B38B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DDBC815E68C070025B38B /* Icon-72.png */; };
-		7C2DDBCE15E68C070025B38B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DDBC915E68C070025B38B /* Icon@2x.png */; };
 		7C2DDBCF15E68C070025B38B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DDBCA15E68C070025B38B /* iTunesArtwork.png */; };
 		7C2E641D1625BF8600EB9190 /* free_and_paid_apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64161625BF8500EB9190 /* free_and_paid_apps.png */; };
 		7C2E641E1625BF8600EB9190 /* free_and_paid_apps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64171625BF8500EB9190 /* free_and_paid_apps@2x.png */; };
@@ -49,6 +45,10 @@
 		7C2E64481625C02300EB9190 /* btn_videos_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64451625C02300EB9190 /* btn_videos_deselected.png */; };
 		7C2E64491625C02300EB9190 /* btn_share_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64461625C02300EB9190 /* btn_share_deselected.png */; };
 		7C2E644C1625CCCF00EB9190 /* UnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E644B1625C51D00EB9190 /* UnderlinedButton.m */; };
+		7C8F817A165E6AA3004511A6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F8178165E6AA3004511A6 /* Icon-Small-50.png */; };
+		7C8F817B165E6AA3004511A6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F8179165E6AA3004511A6 /* Icon.png */; };
+		7C8F817F165E6AC3004511A6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F817D165E6AC3004511A6 /* Icon@2x.png */; };
+		7C8F8181165E6ADD004511A6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F8180165E6ADD004511A6 /* Icon-72.png */; };
 		7C928AAB1591D38A007784EF /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C928A9E1591D38A007784EF /* FBDialog.bundle */; };
 		7C928AAC1591D38A007784EF /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C928AA41591D38A007784EF /* libfacebook_ios_sdk.a */; };
 		7C928AB21591D6F0007784EF /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C928AB11591D6F0007784EF /* Share.m */; };
@@ -160,10 +160,6 @@
 		7C1965EB15B42D8A00E912D7 /* 68.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 68.png; sourceTree = "<group>"; };
 		7C1965EC15B42D8A00E912D7 /* 69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 69.png; sourceTree = "<group>"; };
 		7C1965ED15B42D8A00E912D7 /* 70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 70.png; sourceTree = "<group>"; };
-		7C2DDBC615E68C070025B38B /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		7C2DDBC715E68C070025B38B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		7C2DDBC815E68C070025B38B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		7C2DDBC915E68C070025B38B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		7C2DDBCA15E68C070025B38B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		7C2E64161625BF8500EB9190 /* free_and_paid_apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free_and_paid_apps.png; sourceTree = "<group>"; };
 		7C2E64171625BF8500EB9190 /* free_and_paid_apps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "free_and_paid_apps@2x.png"; sourceTree = "<group>"; };
@@ -193,6 +189,10 @@
 		7C2E64461625C02300EB9190 /* btn_share_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share_deselected.png; sourceTree = "<group>"; };
 		7C2E644A1625C51D00EB9190 /* UnderlinedButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnderlinedButton.h; sourceTree = "<group>"; };
 		7C2E644B1625C51D00EB9190 /* UnderlinedButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnderlinedButton.m; sourceTree = "<group>"; };
+		7C8F8178165E6AA3004511A6 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		7C8F8179165E6AA3004511A6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7C8F817D165E6AC3004511A6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		7C8F8180165E6ADD004511A6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		7C928A9C1591D38A007784EF /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		7C928A9D1591D38A007784EF /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		7C928A9E1591D38A007784EF /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		7C928ABF1591DDA3007784EF /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		7CAE9EF51626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
 		7CAE9F0F1626F34C00474CD2 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
-		7CDA00391585FCC70035619C /* English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CDA00391585FCC70035619C /* GCSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCSE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDA003D1585FCC70035619C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7CDA003F1585FCC70035619C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CDA00411585FCC70035619C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -393,7 +393,7 @@
 		7CDA003A1585FCC70035619C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CDA00391585FCC70035619C /* English.app */,
+				7CDA00391585FCC70035619C /* GCSE.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -474,10 +474,10 @@
 				7C2E64371625C00900EB9190 /* icon_share_on_facebook.png */,
 				7C2E64381625C00A00EB9190 /* icon_share_on_twitter.png */,
 				7C2E64391625C00A00EB9190 /* share_intro.png */,
-				7C2DDBC615E68C070025B38B /* Icon-Small-50.png */,
-				7C2DDBC715E68C070025B38B /* Icon.png */,
-				7C2DDBC815E68C070025B38B /* Icon-72.png */,
-				7C2DDBC915E68C070025B38B /* Icon@2x.png */,
+				7C8F8178165E6AA3004511A6 /* Icon-Small-50.png */,
+				7C8F8180165E6ADD004511A6 /* Icon-72.png */,
+				7C8F8179165E6AA3004511A6 /* Icon.png */,
+				7C8F817D165E6AC3004511A6 /* Icon@2x.png */,
 				7C2DDBCA15E68C070025B38B /* iTunesArtwork.png */,
 				7CDA00A6158600570035619C /* BlackBackGround_Iphone.png */,
 			);
@@ -638,7 +638,7 @@
 			);
 			name = EnglishVideoStreameriPhone;
 			productName = EnglishVideoStreameriPhone;
-			productReference = 7CDA00391585FCC70035619C /* English.app */;
+			productReference = 7CDA00391585FCC70035619C /* GCSE.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -747,10 +747,6 @@
 				7C1965F515B42D8A00E912D7 /* 68.png in Resources */,
 				7C1965F615B42D8A00E912D7 /* 69.png in Resources */,
 				7C1965F715B42D8A00E912D7 /* 70.png in Resources */,
-				7C2DDBCB15E68C070025B38B /* Icon-Small-50.png in Resources */,
-				7C2DDBCC15E68C070025B38B /* Icon.png in Resources */,
-				7C2DDBCD15E68C070025B38B /* Icon-72.png in Resources */,
-				7C2DDBCE15E68C070025B38B /* Icon@2x.png in Resources */,
 				7C2DDBCF15E68C070025B38B /* iTunesArtwork.png in Resources */,
 				7C2E641D1625BF8600EB9190 /* free_and_paid_apps.png in Resources */,
 				7C2E641E1625BF8600EB9190 /* free_and_paid_apps@2x.png in Resources */,
@@ -780,6 +776,10 @@
 				7C2E64491625C02300EB9190 /* btn_share_deselected.png in Resources */,
 				7CAE9EF61626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf in Resources */,
 				7CAE9F101626F34C00474CD2 /* HowtouseVideoStreamer.pdf in Resources */,
+				7C8F817A165E6AA3004511A6 /* Icon-Small-50.png in Resources */,
+				7C8F817B165E6AA3004511A6 /* Icon.png in Resources */,
+				7C8F817F165E6AC3004511A6 /* Icon@2x.png in Resources */,
+				7C8F8181165E6ADD004511A6 /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,7 +891,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 				);
-				PRODUCT_NAME = English;
+				PRODUCT_NAME = GCSE;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B9822E3D-7500-48DA-A4D2-7DE190186ED3";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -912,7 +912,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 				);
-				PRODUCT_NAME = English;
+				PRODUCT_NAME = GCSE;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
 				VALID_ARCHS = armv7;
