@@ -31,5 +31,6 @@
 @property (nonatomic, retain) UIImageView *ImageViewer1;
 @property (nonatomic, retain) MPMoviePlayerViewController *moviePlayerViewController;
 @property (nonatomic, retain) FreeVideosClass *FreeView;
+-(void)RecordStatusToLearnersCloud:(BOOL)isStarting;
 
 @end

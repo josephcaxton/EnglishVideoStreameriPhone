@@ -29,7 +29,7 @@
                                       withError:&error]) {
         NSLog(@"error in trackEvent");
     }
-
+    [self RecordStatusToLearnersCloud: NO];
     
     MPMoviePlayerController *player = [notification object];  
 	[[NSNotificationCenter defaultCenter] removeObserver:self  
@@ -52,7 +52,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     domain = appDelegate.DomainName;
-    ServerLocation = [NSString stringWithFormat:@"%@/iosStream/English/",domain];
+    ServerLocation = [NSString stringWithFormat:@"%@/iosStreamv2/English/",domain];
 	
     NSError *error;
     // Report to  analytics
@@ -60,7 +60,7 @@
                                          withError:&error]) {
         NSLog(@"error in trackPageview");
     }
-
+    [self RecordStatusToLearnersCloud: YES];
 	
 }
 
@@ -74,7 +74,7 @@
     if (![[GANTracker sharedTracker] trackEvent:@"Playing Video"
                                          action:@"Playing"
                                           label:@"Playing"
-                                          value:69
+                                          value:1
                                       withError:&error]) {
         NSLog(@"error in trackEvent");
     }
@@ -83,17 +83,17 @@
     //Authentication Details here
     
    NSURLCredential *credential1 = [[NSURLCredential alloc] 
-                                   initWithUser:@"Theta"
-                                   password:@"Ffk7acay@#"
+                                   initWithUser:@"iosuser"
+                                   password:@"letmein2"
                                    persistence: NSURLCredentialPersistenceForSession];
     self.credential = credential1;
     
-    NSString *DomainLocation = @"learnerscloud.com"; //[domain stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+    NSString *DomainLocation = @"www.learnerscloud.com"; //[domain stringByReplacingOccurrencesOfString:@"http://" withString:@""];
     //NSString *DomainLocationPlus = [DomainLocation stringByAppendingString:@"/maths"];
    NSURLProtectionSpace *protectionSpace1 = [[NSURLProtectionSpace alloc]
                                              initWithHost: DomainLocation 
-                                             port:80
-                                             protocol:@"http"
+                                             port:443
+                                             protocol:@"https"
                                              realm: DomainLocation   
                                              authenticationMethod:NSURLAuthenticationMethodDefault];
     self.protectionSpace = protectionSpace1;
@@ -205,6 +205,87 @@
 	
 }
 
+-(void)RecordStatusToLearnersCloud:(BOOL)isStarting{
+    
+    // This will send a record to the users account at learnerscloud to log when the user start of finished watching video
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSString *domainURL = appDelegate.DomainName;
+    
+    
+    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/RecordVideoActivity",domainURL];
+    
+    
+    
+    NSURL *url = [NSURL URLWithString:queryString];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *deviceID = [prefs stringForKey:@"LCUIID"];
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+    
+    
+    NSDate *Timenow = [[NSDate alloc] init];
+    
+    NSString *now = [dateFormatter stringFromDate:Timenow];
+    // We have to encode the Date change : to %3A
+    NSMutableString *Mutabletime = [NSMutableString stringWithString:now];
+    
+    [Mutabletime replaceOccurrencesOfString:@":" withString:@"%3A" options:NSCaseInsensitiveSearch range:NSMakeRange(0, Mutabletime.length)];
+    
+    //NSLog(@"%@",[Mutabletime stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+    
+    NSString *AppId = @"58";   // 58 means this is English
+    NSString *Starting = isStarting ? @"True" : @"False";
+    NSString *ClipURN = self.VideoFileName;
+    
+    NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&AppID=%@&clipURN=%@&isStart=%@&eventTime=%@",deviceID,AppId,ClipURN,Starting,Mutabletime];
+    
+    
+    NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    
+    NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
+    [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
+    unsigned long long postLength = data.length;
+    NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
+    [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
+    
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody:data];
+    
+    NSURLConnection *conn;
+    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if (!conn) {
+        NSLog(@"error while starting the connection");
+    }
+    
+    
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
+    
+    /*VerifySubscription return codes from server:
+     
+     0 OK
+     -1 Error other than those below
+     -2 Sql Error
+     -3 DeviceID not recognised
+     -4 clipURN not recognised
+     -5 Theoretically cant happen - just to keep compiler happy */
+    
+    //NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",returnedString);
+    
+    
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

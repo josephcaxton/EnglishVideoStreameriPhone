@@ -881,7 +881,8 @@
 		7CDA00661585FCC70035619C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joseph caxton (99S98QLWW3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Prefix.pch";
 				INFOPLIST_FILE = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Info.plist";
@@ -892,7 +893,8 @@
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = GCSE;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B9822E3D-7500-48DA-A4D2-7DE190186ED3";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
