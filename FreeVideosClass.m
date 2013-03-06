@@ -11,12 +11,14 @@
 #import "ConfigObject.h"
 #import "VideoPlayer.h"
 #import "Buy.h"
+#import "ListCell.h"
 
 
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo,FullSubscription;
+@synthesize ArrayofConfigObjects,filteredArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo,FullSubscription,mySearchBar;
+
 
 
 
@@ -103,7 +105,8 @@
     
     
     ArrayofConfigObjects = [[NSMutableArray alloc] init];
-    
+    filteredArrayofConfigObjects = [[NSMutableArray alloc] init];
+
    
         
     }
@@ -115,6 +118,16 @@
     }
 	
     [appDelegate.SecondThread cancel];
+    
+    mySearchBar = [[UISearchBar alloc] init];
+    mySearchBar.placeholder = @"Type a search term";
+    mySearchBar.tintColor = [UIColor blackColor];
+    mySearchBar.delegate = self;
+    [mySearchBar sizeToFit];
+    [mySearchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [mySearchBar sizeToFit];
+    self.tableView.tableHeaderView = mySearchBar;
+
         
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -202,6 +215,7 @@
      //NSLog(@"%@", appDelegate.TempSubscibedProducts);
      //NSLog(@"%@",  ProductsSubscibedTo);
     [ArrayofConfigObjects removeAllObjects];
+      [filteredArrayofConfigObjects removeAllObjects];
     [self MyParser:Dir];
     [self.tableView reloadData];
     
@@ -327,6 +341,7 @@
 		
 
 	}
+    filteredArrayofConfigObjects = [ArrayofConfigObjects mutableCopy];
 }
 
 
@@ -339,9 +354,15 @@
 	return count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
    
-    NSInteger numberOfRows =[ArrayofConfigObjects count];
+    NSInteger numberOfRows =[filteredArrayofConfigObjects count];
 	
     return numberOfRows;
 	
@@ -352,13 +373,13 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[ListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     
-    ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
+    ConfigObject *obj = [filteredArrayofConfigObjects objectAtIndex:indexPath.row];
     //Change how image is loaded
     //NSString *PicLocation = [[NSString alloc] initWithFormat:@"%@",[obj Thumbnail]];
     //UIImage* theImage = [UIImage imageNamed:PicLocation];
@@ -368,15 +389,20 @@
     cell.imageView.image = theImage;
     
     cell.textLabel.text = [obj VideoTitle];
-    
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
     // Is it free?
     if ([obj Free] == YES){
-       
-         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-         NSString* descriptiontxt = [obj VideoDescription];
-         NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        NSString* descriptiontxt = [obj VideoDescription];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
         cell.detailTextLabel.text =FullDesciption;
-         cell.detailTextLabel.textColor = [UIColor blueColor];
+        cell.detailTextLabel.textColor = [UIColor blueColor];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.numberOfLines = 0;
         
     }
     else if ([obj SociallyFree] == YES){
@@ -392,13 +418,15 @@
             FullDesciption = [descriptiontxt stringByAppendingString:@" - Free gift if you share"];
         }
         
-
         cell.detailTextLabel.text =FullDesciption;
         cell.detailTextLabel.textColor = [UIColor blueColor];
-        
-        
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.numberOfLines = 0;
     }
-
+    
+    
     // Is user Subscribed?
     else if([obj Subcribed] == YES || FullSubscription == TRUE){
         
@@ -407,19 +435,24 @@
         NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscription Paid"];
         cell.detailTextLabel.text =FullDesciption;
         cell.detailTextLabel.textColor = [UIColor blueColor];
-        
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.numberOfLines = 0;
     }
     // Sorry mate you have to buy
     else
     {
         
-         cell.accessoryType =  UITableViewCellAccessoryNone;
-          NSString* descriptiontxt = [obj VideoDescription];
-         NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscribe"];
-         cell.detailTextLabel.text = FullDesciption;
-         cell.detailTextLabel.textColor = [UIColor redColor];
+        cell.accessoryType =  UITableViewCellAccessoryNone;
+        NSString* descriptiontxt = [obj VideoDescription];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscribe"];
+        cell.detailTextLabel.text = FullDesciption;
+        cell.detailTextLabel.textColor = [UIColor redColor];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.detailTextLabel.numberOfLines = 0;
     }
-   
+    
     
     
 	
@@ -438,7 +471,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
+    ConfigObject *obj = [filteredArrayofConfigObjects objectAtIndex:indexPath.row];
     
     if ([obj Free] == YES || [obj Subcribed] == YES || FullSubscription == TRUE) {
         
@@ -638,6 +671,73 @@
     NSString *str = @"https://userpub.itunes.apple.com/WebObjects/MZUserPublishing.woa/wa/addUserReview?id=535073858&type=Purple+Software"; 
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    mySearchBar.showsCancelButton = YES;
+    mySearchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    
+    //empty previous search results
+    [filteredArrayofConfigObjects removeAllObjects];
+    [self.tableView reloadData];
+}
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    mySearchBar.showsCancelButton = NO;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    //empty previous search results
+    [filteredArrayofConfigObjects removeAllObjects];
+    
+    if([searchText isEqualToString:@""] || searchText==nil){
+        //show original dataset records
+        filteredArrayofConfigObjects = [ArrayofConfigObjects mutableCopy];
+        [self.tableView reloadData];
+    }
+    
+    else {
+        
+        for(ConfigObject *obj in ArrayofConfigObjects){
+            
+            NSRange foundInTitle = [[obj.VideoTitle lowercaseString] rangeOfString:[searchText lowercaseString]];
+            
+            if(foundInTitle.location != NSNotFound){
+                
+                [filteredArrayofConfigObjects addObject:obj];
+                
+            }else {
+                
+                NSRange foundInDescrption = [[obj.VideoDescription lowercaseString] rangeOfString:[searchText lowercaseString]];
+                
+                if(foundInDescrption.location != NSNotFound){
+                    
+                    [filteredArrayofConfigObjects addObject:obj];
+                }
+            }
+        }
+        
+        [self.tableView reloadData];
+        
+    }
+    
+    
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    
+    [filteredArrayofConfigObjects removeAllObjects];
+    filteredArrayofConfigObjects = [ArrayofConfigObjects mutableCopy];
+    [self.tableView reloadData];
+    [searchBar resignFirstResponder];
+    searchBar.text = @"";
+    
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+}
+
+
 
 
 
