@@ -100,7 +100,7 @@ int dontShowPriceList = 0;
 
 - (BOOL)isDataSourceAvailable{
     static BOOL checkNetwork = YES;
-	BOOL _isDataSourceAvailable;
+	BOOL _isDataSourceAvailable = NO;
     if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
 		// checkNetwork = NO; don't cache
 		

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C18048A16FB382D00DBCF78 /* website_promo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C18048816FB382D00DBCF78 /* website_promo.png */; };
+		7C18048B16FB382D00DBCF78 /* website_promo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C18048916FB382D00DBCF78 /* website_promo@2x.png */; };
+		7C18048D16FB391B00DBCF78 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C18048C16FB391B00DBCF78 /* HowtouseVideoStreamer.pdf */; };
 		7C1965EE15B42D8A00E912D7 /* 61.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E415B42D8A00E912D7 /* 61.png */; };
 		7C1965EF15B42D8A00E912D7 /* 62.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E515B42D8A00E912D7 /* 62.png */; };
 		7C1965F015B42D8A00E912D7 /* 63.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965E615B42D8A00E912D7 /* 63.png */; };
@@ -33,8 +36,6 @@
 		7C2E642F1625BFEE00EB9190 /* web_promo_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E642E1625BFEE00EB9190 /* web_promo_btn.png */; };
 		7C2E643A1625C00A00EB9190 /* divider_notifications.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64301625C00900EB9190 /* divider_notifications.png */; };
 		7C2E643B1625C00A00EB9190 /* divider_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64311625C00900EB9190 /* divider_share.png */; };
-		7C2E643C1625C00A00EB9190 /* website_promo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64321625C00900EB9190 /* website_promo.png */; };
-		7C2E643D1625C00A00EB9190 /* website_promo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64331625C00900EB9190 /* website_promo@2x.png */; };
 		7C2E643E1625C00A00EB9190 /* icon_email_to_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64341625C00900EB9190 /* icon_email_to_friend.png */; };
 		7C2E643F1625C00A00EB9190 /* icon_follow_on_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64351625C00900EB9190 /* icon_follow_on_twitter.png */; };
 		7C2E64401625C00A00EB9190 /* icon_like_on_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64361625C00900EB9190 /* icon_like_on_facebook.png */; };
@@ -55,7 +56,6 @@
 		7C928AB21591D6F0007784EF /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C928AB11591D6F0007784EF /* Share.m */; };
 		7C928AC01591DDA3007784EF /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C928ABF1591DDA3007784EF /* Twitter.framework */; };
 		7CAE9EF61626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CAE9EF51626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf */; };
-		7CAE9F101626F34C00474CD2 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CAE9F0F1626F34C00474CD2 /* HowtouseVideoStreamer.pdf */; };
 		7CD6D95A16974023004BCB15 /* Coverage-list-for-GCSE-English.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D95916974023004BCB15 /* Coverage-list-for-GCSE-English.pdf */; };
 		7CD6D96016974079004BCB15 /* nav_btn_coverage_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D95F16974079004BCB15 /* nav_btn_coverage_deselected.png */; };
 		7CD6D961169740A0004BCB15 /* Coverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6D95C16974038004BCB15 /* Coverage.m */; };
@@ -155,6 +155,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C18048816FB382D00DBCF78 /* website_promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = website_promo.png; sourceTree = "<group>"; };
+		7C18048916FB382D00DBCF78 /* website_promo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "website_promo@2x.png"; sourceTree = "<group>"; };
+		7C18048C16FB391B00DBCF78 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7C1965E415B42D8A00E912D7 /* 61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 61.png; sourceTree = "<group>"; };
 		7C1965E515B42D8A00E912D7 /* 62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 62.png; sourceTree = "<group>"; };
 		7C1965E615B42D8A00E912D7 /* 63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 63.png; sourceTree = "<group>"; };
@@ -181,8 +184,6 @@
 		7C2E642E1625BFEE00EB9190 /* web_promo_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web_promo_btn.png; sourceTree = "<group>"; };
 		7C2E64301625C00900EB9190 /* divider_notifications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider_notifications.png; sourceTree = "<group>"; };
 		7C2E64311625C00900EB9190 /* divider_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider_share.png; sourceTree = "<group>"; };
-		7C2E64321625C00900EB9190 /* website_promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = website_promo.png; sourceTree = "<group>"; };
-		7C2E64331625C00900EB9190 /* website_promo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "website_promo@2x.png"; sourceTree = "<group>"; };
 		7C2E64341625C00900EB9190 /* icon_email_to_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_email_to_friend.png; sourceTree = "<group>"; };
 		7C2E64351625C00900EB9190 /* icon_follow_on_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_follow_on_twitter.png; sourceTree = "<group>"; };
 		7C2E64361625C00900EB9190 /* icon_like_on_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_like_on_facebook.png; sourceTree = "<group>"; };
@@ -219,7 +220,6 @@
 		7C928AB11591D6F0007784EF /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		7C928ABF1591DDA3007784EF /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		7CAE9EF51626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
-		7CAE9F0F1626F34C00474CD2 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7CD6D95916974023004BCB15 /* Coverage-list-for-GCSE-English.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Coverage-list-for-GCSE-English.pdf"; sourceTree = "<group>"; };
 		7CD6D95B16974038004BCB15 /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
 		7CD6D95C16974038004BCB15 /* Coverage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coverage.m; sourceTree = "<group>"; };
@@ -497,10 +497,10 @@
 				7C2E642A1625BFD900EB9190 /* hero_english.png */,
 				7C2E642B1625BFD900EB9190 /* hero_english@2x.png */,
 				7C2E642E1625BFEE00EB9190 /* web_promo_btn.png */,
+				7C18048816FB382D00DBCF78 /* website_promo.png */,
+				7C18048916FB382D00DBCF78 /* website_promo@2x.png */,
 				7C2E64301625C00900EB9190 /* divider_notifications.png */,
 				7C2E64311625C00900EB9190 /* divider_share.png */,
-				7C2E64321625C00900EB9190 /* website_promo.png */,
-				7C2E64331625C00900EB9190 /* website_promo@2x.png */,
 				7C2E64341625C00900EB9190 /* icon_email_to_friend.png */,
 				7C2E64351625C00900EB9190 /* icon_follow_on_twitter.png */,
 				7C2E64361625C00900EB9190 /* icon_like_on_facebook.png */,
@@ -644,7 +644,7 @@
 				7C1965EC15B42D8A00E912D7 /* 69.png */,
 				7C1965ED15B42D8A00E912D7 /* 70.png */,
 				7CAE9EF51626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf */,
-				7CAE9F0F1626F34C00474CD2 /* HowtouseVideoStreamer.pdf */,
+				7C18048C16FB391B00DBCF78 /* HowtouseVideoStreamer.pdf */,
 			);
 			name = "Video images";
 			sourceTree = "<group>";
@@ -800,8 +800,6 @@
 				7C2E642F1625BFEE00EB9190 /* web_promo_btn.png in Resources */,
 				7C2E643A1625C00A00EB9190 /* divider_notifications.png in Resources */,
 				7C2E643B1625C00A00EB9190 /* divider_share.png in Resources */,
-				7C2E643C1625C00A00EB9190 /* website_promo.png in Resources */,
-				7C2E643D1625C00A00EB9190 /* website_promo@2x.png in Resources */,
 				7C2E643E1625C00A00EB9190 /* icon_email_to_friend.png in Resources */,
 				7C2E643F1625C00A00EB9190 /* icon_follow_on_twitter.png in Resources */,
 				7C2E64401625C00A00EB9190 /* icon_like_on_facebook.png in Resources */,
@@ -812,13 +810,15 @@
 				7C2E64481625C02300EB9190 /* btn_videos_deselected.png in Resources */,
 				7C2E64491625C02300EB9190 /* btn_share_deselected.png in Resources */,
 				7CAE9EF61626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf in Resources */,
-				7CAE9F101626F34C00474CD2 /* HowtouseVideoStreamer.pdf in Resources */,
 				7C8F817A165E6AA3004511A6 /* Icon-Small-50.png in Resources */,
 				7C8F817B165E6AA3004511A6 /* Icon.png in Resources */,
 				7C8F817F165E6AC3004511A6 /* Icon@2x.png in Resources */,
 				7C8F8181165E6ADD004511A6 /* Icon-72.png in Resources */,
 				7CD6D95A16974023004BCB15 /* Coverage-list-for-GCSE-English.pdf in Resources */,
 				7CD6D96016974079004BCB15 /* nav_btn_coverage_deselected.png in Resources */,
+				7C18048A16FB382D00DBCF78 /* website_promo.png in Resources */,
+				7C18048B16FB382D00DBCF78 /* website_promo@2x.png in Resources */,
+				7C18048D16FB391B00DBCF78 /* HowtouseVideoStreamer.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

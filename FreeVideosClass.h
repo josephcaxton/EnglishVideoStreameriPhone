@@ -34,7 +34,7 @@
 
 
 
--(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
+-(BOOL)ShouldIDownloadOrNot:(NSString*) urllPath :(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
 -(void)Alertfailedconnection;
 -(void)MyParser:(NSString *)FileLocation;

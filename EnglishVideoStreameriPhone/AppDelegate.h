@@ -52,7 +52,7 @@
 
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
-- (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;
+-(BOOL)downloadfileifUpdated:(NSString*)urLString location:(NSString*)LocalFileLocation;
 - (NSString *)GetUUID;
 -(void)SubscriptionStatus:(NSString *)DeviceID;
 //-(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray;
