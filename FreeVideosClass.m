@@ -45,9 +45,13 @@
       //NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
     
     
-    UIBarButtonItem *SendSupportMail = [[UIBarButtonItem alloc] initWithTitle:@"Report Problem" style: UIBarButtonItemStyleBordered target:self action:@selector(ReportProblem:)];
-    self.navigationItem.rightBarButtonItem = SendSupportMail;
-    
+    UIImage *SubscribeImage = [UIImage imageNamed:@"subscribe.png"];
+    UIButton *Subscribe = [UIButton buttonWithType:UIButtonTypeCustom];
+    [Subscribe setBackgroundImage:SubscribeImage forState:UIControlStateNormal];
+    Subscribe.bounds = CGRectMake( 0, 0, 103, 37 );
+    [Subscribe addTarget:self action:@selector(GoSubScribe:)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *SubscribeButton = [[UIBarButtonItem alloc] initWithCustomView:Subscribe];
+    self.navigationItem.rightBarButtonItem = SubscribeButton;
     // Get Subscibed products from delegate
     /*if([appDelegate.SubscibedProducts count] > 0){
         
@@ -397,7 +401,7 @@
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSString* descriptiontxt = [obj VideoDescription];
-        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@""];
         cell.detailTextLabel.text =FullDesciption;
         cell.detailTextLabel.textColor = [UIColor blueColor];
         cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
@@ -412,7 +416,7 @@
         NSString* FullDesciption = @"";
         // Check if we are in full subscription if so Change text to paid
         if(FullSubscription == TRUE){
-            FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscription Paid"];
+            FullDesciption = [descriptiontxt stringByAppendingString:@""];
         }
         else {
             FullDesciption = [descriptiontxt stringByAppendingString:@" - Free gift if you share"];
@@ -432,7 +436,7 @@
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSString* descriptiontxt = [obj VideoDescription];
-        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscription Paid"];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@""];
         cell.detailTextLabel.text =FullDesciption;
         cell.detailTextLabel.textColor = [UIColor blueColor];
         cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
@@ -445,7 +449,7 @@
         
         cell.accessoryType =  UITableViewCellAccessoryNone;
         NSString* descriptiontxt = [obj VideoDescription];
-        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscribe"];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@""];
         cell.detailTextLabel.text = FullDesciption;
         cell.detailTextLabel.textColor = [UIColor redColor];
         cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
@@ -528,6 +532,24 @@
 
 }
 
+-(IBAction)GoSubScribe:(UIButton*)sender{
+    
+    int tag = sender.tag;
+    
+    ConfigObject *obj = [filteredArrayofConfigObjects objectAtIndex:tag];
+    
+    [self ConfigureProductList:[obj ProductID]];
+    
+    Buy *buyer = [[Buy alloc ]initWithNibName:nil bundle:nil];
+    buyer.ProductsToIstore = ProductIDs;
+    //NSLog(@"%@",ProductIDs);
+    [self.navigationController pushViewController:buyer animated:YES];
+    
+    
+    
+}
+
+
 -(void)ConfigureProductList:(NSString *)ProductID{
     
     ProductIDs = [[NSMutableArray alloc] init];
@@ -574,55 +596,6 @@
 
 
 
-
--(IBAction)ReportProblem:(id)sender{
-	
-	if ([MFMailComposeViewController canSendMail]) {
-        
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
-        
-        NSArray *SendTo = [NSArray arrayWithObjects:@"support@LearnersCloud.com",nil];
-        
-        MFMailComposeViewController *SendMailcontroller = [[MFMailComposeViewController alloc]init];
-        SendMailcontroller.mailComposeDelegate = self;
-        [SendMailcontroller setToRecipients:SendTo];
-        [SendMailcontroller setSubject:[NSString stringWithFormat:@"%@ English video streaming iPhone",DeviceID]];
-        
-        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Add message here "] isHTML:NO];
-        [self presentModalViewController:SendMailcontroller animated:YES];
-        
-		
-	}
-	
-	else {
-		UIAlertView *Alert = [[UIAlertView alloc] initWithTitle: @"Cannot send mail" 
-                                                        message: @"Device is unable to send email in its current state. Configure email" delegate: self 
-                                              cancelButtonTitle: @"Ok" otherButtonTitles: nil];
-		
-		
-		
-		[Alert show];
-		
-		
-	}
-    
-    // This is to fix a problem on Iphone. Status bar is going on top of the navigationcontroller.
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];	
-}
-
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
-	
-	
-	[self becomeFirstResponder];
-	[self dismissModalViewControllerAnimated:YES];
-	
-	
-	
-	
-}
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
@@ -691,7 +664,9 @@
     //empty previous search results
     [filteredArrayofConfigObjects removeAllObjects];
     
-    if([searchText isEqualToString:@""] || searchText==nil){
+    NSString *searchString = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([searchString isEqualToString:@""] || searchString==nil){
         //show original dataset records
         filteredArrayofConfigObjects = [ArrayofConfigObjects mutableCopy];
         [self.tableView reloadData];
@@ -701,7 +676,7 @@
         
         for(ConfigObject *obj in ArrayofConfigObjects){
             
-            NSRange foundInTitle = [[obj.VideoTitle lowercaseString] rangeOfString:[searchText lowercaseString]];
+            NSRange foundInTitle = [[obj.VideoTitle lowercaseString] rangeOfString:[searchString lowercaseString]];
             
             if(foundInTitle.location != NSNotFound){
                 
@@ -709,7 +684,7 @@
                 
             }else {
                 
-                NSRange foundInDescrption = [[obj.VideoDescription lowercaseString] rangeOfString:[searchText lowercaseString]];
+                NSRange foundInDescrption = [[obj.VideoDescription lowercaseString] rangeOfString:[searchString lowercaseString]];
                 
                 if(foundInDescrption.location != NSNotFound){
                     

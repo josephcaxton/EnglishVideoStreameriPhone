@@ -11,7 +11,7 @@
 #import "FBConnect.h"
 #import "GANTracker.h"
 
-@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate,UISearchBarDelegate>{
+@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate,UISearchBarDelegate>{
     
     NSMutableArray *ArrayofConfigObjects;
     NSMutableArray *filteredArrayofConfigObjects;

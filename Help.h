@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface Help : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface Help : UIViewController <UITableViewDataSource, UITableViewDelegate,MFMailComposeViewControllerDelegate>{
     
     NSMutableArray *listofItems;
     UIButton *LCButton;
