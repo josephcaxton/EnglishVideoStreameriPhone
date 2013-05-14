@@ -546,8 +546,8 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
     
     // NSString *Raw_DeviceToken = [NSString stringWithFormat:@"%@",deviceToken];
     
-    NSString *DeviceUDID = [NSString 
-                            stringWithFormat:@"%@",[UIDevice currentDevice].uniqueIdentifier];
+   // NSString *DeviceUDID = [NSString stringWithFormat:@"%@",[UIDevice currentDevice].uniqueIdentifier];
+     NSString *DeviceUDID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     NSString *DeviceTokenRemoveCh1 = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     
