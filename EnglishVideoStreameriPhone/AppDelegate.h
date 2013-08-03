@@ -24,6 +24,7 @@
     BOOL EmailFlag;
     BOOL DoesUserHaveEmail;
     BOOL AccessAll;
+    NSNumber *FlagToLoginOrLogout;
     
     // this is to handle return from facebook
     
@@ -48,6 +49,7 @@
 @property (nonatomic, assign) BOOL AccessAll;
 @property (nonatomic, retain)  Facebook *m_facebook;
 @property (nonatomic, retain) NSNumber *DeviceScreenType;
+@property (nonatomic, retain)  NSNumber *FlagToLoginOrLogout;
 
 
 - (NSString *)applicationDocumentsDirectory;

@@ -182,7 +182,7 @@ int dontShowPriceList = 0;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    return 100;
+    return 60;
 }
 
 
@@ -212,7 +212,7 @@ int dontShowPriceList = 0;
 	UIButton *BuyNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];  
 	
 	//[BuyNow setTitle:@""  forState:UIControlStateNormal];
-	BuyNow.frame = CGRectMake(150, 30, 100, 39);
+	BuyNow.frame = CGRectMake(150, 10, 100, 39);
 	BuyNow.tag = indexPath.row;
 	[BuyNow addTarget:self action:@selector(BuyVideo:) forControlEvents:UIControlEventTouchUpInside];
 	
