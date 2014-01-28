@@ -15,6 +15,8 @@
 @synthesize listofItems,ImageNames,LCButton,FirstTable,FirstViewframe,PromoImageView;
 #define SCREEN_WIDTH  320
 #define SCREEN_HEIGHT 470
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 
 
 
@@ -142,7 +144,7 @@
         
         NSString *cellValue = [[NSString alloc] initWithFormat:@"%@",[listofItems objectAtIndex:indexPath.row]];
         NSString *PicLocation = [[NSString alloc] initWithFormat:@"%@",[ImageNames objectAtIndex:indexPath.row]];
-        UILabel *Title = [[UILabel alloc] initWithFrame:CGRectMake(80.0,0.0,240,50)];
+        UILabel *Title = [[UILabel alloc] initWithFrame:CGRectMake(100.0,0.0,240,50)];
         Title.backgroundColor = [UIColor clearColor];
         Title.text = cellValue;
         [cell.contentView addSubview:Title];
@@ -165,7 +167,15 @@
         NSString *PromoImagePath = [[NSBundle mainBundle] pathForResource:@"website_promo" ofType:@"png"];
         UIImage *PromoImage = [[UIImage alloc] initWithContentsOfFile:PromoImagePath];
         PromoImageView = [[UIImageView alloc] initWithImage:PromoImage];
-        PromoImageView.frame = CGRectMake(0, 10.0, 300, 250);
+        //To fix ios7 extending edges
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")){
+            
+            PromoImageView.frame = CGRectMake(10, 10.0, 300, 250);
+        }
+        else{
+            PromoImageView.frame = CGRectMake(0, 10.0, 300, 250);
+        }
+
         [PromoView addSubview:PromoImageView];
         [cell.contentView addSubview:PromoView];
         
@@ -184,7 +194,7 @@
         
         LCButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [LCButton setImage:LCImage forState:UIControlStateNormal];
-        LCButton.frame = CGRectMake(25, 200, 250, 50);
+        LCButton.frame = CGRectMake(35, 200, 250, 50);
         [LCButton addTarget:self action:@selector(WebsitebuttonPressed) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:LCButton];
         
@@ -215,7 +225,7 @@
                 TrailerPlayer *VP1 = [[TrailerPlayer alloc] initWithNibName:nil bundle:nil];
                 VP1.VideoFileName =@"MathsTtrailerv6";
                 VP1.ServerLocation = @"http://learnerscloud.com/iosStreamv2/maths/";
-                VP1.hidesBottomBarWhenPushed = YES;
+                //VP1.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:VP1 animated:NO];
             }
                 break;
@@ -225,7 +235,7 @@
                 TrailerPlayer *VP2 = [[TrailerPlayer	alloc] initWithNibName:nil bundle:nil];
                 VP2.VideoFileName =@"EnglishTrailerv5";
                 VP2.ServerLocation = @"http://learnerscloud.com/iosStreamv2/english/";
-                VP2.hidesBottomBarWhenPushed = YES;
+                //VP2.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:VP2 animated:YES];
             }
                 break;
@@ -236,7 +246,7 @@
                TrailerPlayer *VP3 = [[TrailerPlayer	alloc] initWithNibName:nil bundle:nil];
                 VP3.VideoFileName =@"PhysicsTrailerV5";
                 VP3.ServerLocation =@"http://learnerscloud.com/iosStreamv2/Physics/";
-                VP3.hidesBottomBarWhenPushed = YES;
+                //VP3.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:VP3 animated:YES];
             }
                 break;
@@ -246,7 +256,7 @@
                 TrailerPlayer *VP4 = [[TrailerPlayer	alloc] initWithNibName:nil bundle:nil];
                 VP4.VideoFileName =@"ChemistryPromoFINAL";
                 VP4.ServerLocation = @"http://learnerscloud.com/iosStreamv2/Chemistry/";
-                VP4.hidesBottomBarWhenPushed = YES;
+                //VP4.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:VP4 animated:YES];
                 
             }
@@ -258,7 +268,7 @@
                 TrailerPlayer *VP5 = [[TrailerPlayer	alloc] initWithNibName:nil bundle:nil];
                 VP5.VideoFileName =@"BIO-Trailer";
                 VP5.ServerLocation = @"http://learnerscloud.com/iosStreamv2/Biology/";
-                VP5.hidesBottomBarWhenPushed = YES;
+                //VP5.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:VP5 animated:YES];
             }
                 
@@ -270,7 +280,7 @@
                 TrailerPlayer *VP6 = [[TrailerPlayer	alloc] initWithNibName:nil bundle:nil];
                 VP6.VideoFileName =@"TESTIMONIALSTUDENTS";
                 VP6.ServerLocation = @"http://learnerscloud.com/iosStreamv2/Trailers/";
-                VP6.hidesBottomBarWhenPushed = YES;
+                //VP6.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:VP6 animated:YES];
             }
                 

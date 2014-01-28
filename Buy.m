@@ -13,7 +13,7 @@
 
 @implementation Buy
 
-@synthesize ProductFromIstore,ProductsToIstore,ProductsToIStoreInArray,SortedDisplayProducts,observer;
+@synthesize ProductFromIstore,ProductsToIstore,ProductsToIStoreInArray,SortedDisplayProducts,observer,selectedproduct;
 
 int dontShowPriceList = 0;
 #pragma mark -
@@ -239,16 +239,16 @@ int dontShowPriceList = 0;
 	appDelegate.buyScreen = self;
     int myTag = [sender tag];
     
-    SKProduct* SelectedProductid = [SortedDisplayProducts objectAtIndex:myTag];
+     selectedproduct = [SortedDisplayProducts objectAtIndex:myTag];
     
     
     // Store Selected ProductID in Delegate
     appDelegate.SelectProductID = nil;
-    appDelegate.SelectProductID = (NSString*)SelectedProductid.productIdentifier;
+    appDelegate.SelectProductID = (NSString*)selectedproduct.productIdentifier;
     
    
             
-    SKPayment *payment = [SKPayment paymentWithProduct:SelectedProductid];
+    SKPayment *payment = [SKPayment paymentWithProduct:selectedproduct];
             [[SKPaymentQueue defaultQueue] addPayment:payment];
            			
 	

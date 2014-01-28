@@ -22,6 +22,7 @@
 	NSArray *ProductsToIStoreInArray;
 	NSArray *SortedDisplayProducts;
 	CustomStoreObserver *observer;
+     SKProduct *selectedproduct;
 }
 
 @property (nonatomic, retain) NSArray *ProductFromIstore;
@@ -29,6 +30,8 @@
 @property (nonatomic, retain) NSArray *ProductsToIStoreInArray;
 @property (nonatomic, retain) NSArray *SortedDisplayProducts;
 @property (nonatomic, retain) CustomStoreObserver *observer;
+@property (nonatomic, retain) SKProduct *selectedproduct;
+
 
 - (void)AddProgress;
 - (BOOL)isDataSourceAvailable;

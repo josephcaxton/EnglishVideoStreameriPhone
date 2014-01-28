@@ -20,6 +20,11 @@
 		7C1965F515B42D8A00E912D7 /* 68.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EB15B42D8A00E912D7 /* 68.png */; };
 		7C1965F615B42D8A00E912D7 /* 69.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965EC15B42D8A00E912D7 /* 69.png */; };
 		7C1965F715B42D8A00E912D7 /* 70.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1965ED15B42D8A00E912D7 /* 70.png */; };
+		7C1E236118126E2900F2F842 /* EnglishVideos29.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E235D18126E2900F2F842 /* EnglishVideos29.png */; };
+		7C1E236218126E2900F2F842 /* EnglishVideos58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E235E18126E2900F2F842 /* EnglishVideos58.png */; };
+		7C1E236318126E2900F2F842 /* EnglishVideos80.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E235F18126E2900F2F842 /* EnglishVideos80.png */; };
+		7C1E236418126E2900F2F842 /* EnglishVideos120.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E236018126E2900F2F842 /* EnglishVideos120.png */; };
+		7C1E236618126E3900F2F842 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E236518126E3900F2F842 /* Images.xcassets */; };
 		7C239E4F17AD188200794B2C /* TransparentToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C239E4E17AD185B00794B2C /* TransparentToolBar.m */; };
 		7C2DDBCF15E68C070025B38B /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DDBCA15E68C070025B38B /* iTunesArtwork.png */; };
 		7C2E641D1625BF8600EB9190 /* free_and_paid_apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2E64161625BF8500EB9190 /* free_and_paid_apps.png */; };
@@ -183,6 +188,12 @@
 		7C1965EB15B42D8A00E912D7 /* 68.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 68.png; sourceTree = "<group>"; };
 		7C1965EC15B42D8A00E912D7 /* 69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 69.png; sourceTree = "<group>"; };
 		7C1965ED15B42D8A00E912D7 /* 70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 70.png; sourceTree = "<group>"; };
+		7C1E235D18126E2900F2F842 /* EnglishVideos29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnglishVideos29.png; sourceTree = "<group>"; };
+		7C1E235E18126E2900F2F842 /* EnglishVideos58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnglishVideos58.png; sourceTree = "<group>"; };
+		7C1E235F18126E2900F2F842 /* EnglishVideos80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnglishVideos80.png; sourceTree = "<group>"; };
+		7C1E236018126E2900F2F842 /* EnglishVideos120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnglishVideos120.png; sourceTree = "<group>"; };
+		7C1E236518126E3900F2F842 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7C1E236718126F6300F2F842 /* GCSE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GCSE.entitlements; sourceTree = "<group>"; };
 		7C239E4D17AD185B00794B2C /* TransparentToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransparentToolBar.h; sourceTree = "<group>"; };
 		7C239E4E17AD185B00794B2C /* TransparentToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransparentToolBar.m; sourceTree = "<group>"; };
 		7C2DDBCA15E68C070025B38B /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
@@ -486,6 +497,7 @@
 		7CDA00431585FCC70035619C /* EnglishVideoStreameriPhone */ = {
 			isa = PBXGroup;
 			children = (
+				7C1E236718126F6300F2F842 /* GCSE.entitlements */,
 				7CDA008F1585FF040035619C /* AppDelegate.h */,
 				7CDA00901585FF040035619C /* AppDelegate.m */,
 				7C87DE9017352F2800D5C5AB /* MainWindow.xib */,
@@ -501,6 +513,7 @@
 				7CDA00461585FCC70035619C /* InfoPlist.strings */,
 				7CDA00491585FCC70035619C /* main.m */,
 				7CDA004B1585FCC70035619C /* EnglishVideoStreameriPhone-Prefix.pch */,
+				7C1E236518126E3900F2F842 /* Images.xcassets */,
 			);
 			path = EnglishVideoStreameriPhone;
 			sourceTree = "<group>";
@@ -525,6 +538,10 @@
 		7CDA00951585FF330035619C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7C1E235D18126E2900F2F842 /* EnglishVideos29.png */,
+				7C1E235E18126E2900F2F842 /* EnglishVideos58.png */,
+				7C1E235F18126E2900F2F842 /* EnglishVideos80.png */,
+				7C1E236018126E2900F2F842 /* EnglishVideos120.png */,
 				7CCE6E9417A160E800526092 /* subscribe.png */,
 				7CCE6E9517A160E800526092 /* subscribe@2x.png */,
 				7C2E64161625BF8500EB9190 /* free_and_paid_apps.png */,
@@ -736,6 +753,16 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = caxtonidowu;
+				TargetAttributes = {
+					7CDA00381585FCC70035619C = {
+						DevelopmentTeam = 9RNCM436XC;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 7CDA00331585FCC70035619C /* Build configuration list for PBXProject "EnglishVideoStreameriPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -764,10 +791,12 @@
 				7CDA012815860CC50035619C /* 1.png in Resources */,
 				7CDA012915860CC50035619C /* 2.png in Resources */,
 				7CDA012A15860CC50035619C /* 3.png in Resources */,
+				7C1E236618126E3900F2F842 /* Images.xcassets in Resources */,
 				7CDA012B15860CC50035619C /* 4.png in Resources */,
 				7CDA012C15860CC50035619C /* 5.png in Resources */,
 				7CDA012D15860CC50035619C /* 6.png in Resources */,
 				7CDA012E15860CC50035619C /* 7.png in Resources */,
+				7C1E236318126E2900F2F842 /* EnglishVideos80.png in Resources */,
 				7CDA012F15860CC50035619C /* 8.png in Resources */,
 				7CDA013015860CC50035619C /* 9.png in Resources */,
 				7CDA013115860CC50035619C /* 10.png in Resources */,
@@ -810,6 +839,7 @@
 				7CDA015615860CC50035619C /* 47.png in Resources */,
 				7CDA015715860CC50035619C /* 48.png in Resources */,
 				7CDA015815860CC50035619C /* 49.png in Resources */,
+				7C1E236218126E2900F2F842 /* EnglishVideos58.png in Resources */,
 				7CDA015915860CC50035619C /* 50.png in Resources */,
 				7CDA015A15860CC50035619C /* 51.png in Resources */,
 				7CDA015B15860CC50035619C /* 52.png in Resources */,
@@ -855,6 +885,7 @@
 				7C2E64421625C00A00EB9190 /* icon_share_on_twitter.png in Resources */,
 				7C2E64431625C00A00EB9190 /* share_intro.png in Resources */,
 				7CAE9EF61626DD0B00474CD2 /* LearnersCloudTermsonapps.pdf in Resources */,
+				7C1E236418126E2900F2F842 /* EnglishVideos120.png in Resources */,
 				7C8F817A165E6AA3004511A6 /* Icon-Small-50.png in Resources */,
 				7C8F817B165E6AA3004511A6 /* Icon.png in Resources */,
 				7C8F817F165E6AC3004511A6 /* Icon@2x.png in Resources */,
@@ -870,6 +901,7 @@
 				7C87DE9B17352F3F00D5C5AB /* Biology.png in Resources */,
 				7C87DE9C17352F3F00D5C5AB /* Chemistry.png in Resources */,
 				7C87DE9D17352F3F00D5C5AB /* Testimonial.png in Resources */,
+				7C1E236118126E2900F2F842 /* EnglishVideos29.png in Resources */,
 				7C87DEA517352FF700D5C5AB /* 70-tv.png in Resources */,
 				7CCE6E9617A160E800526092 /* subscribe.png in Resources */,
 				7CCE6E9717A160E800526092 /* subscribe@2x.png in Resources */,
@@ -987,20 +1019,23 @@
 		7CDA00661585FCC70035619C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = EnglishVideoStreameriPhone/GCSE.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Joseph caxton (99S98QLWW3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joseph caxton (99S98QLWW3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Prefix.pch";
 				INFOPLIST_FILE = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = GCSE;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "1520EB6C-86D9-45CE-9AF5-2091F8533203";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1520EB6C-86D9-45CE-9AF5-2091F8533203";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1009,20 +1044,23 @@
 		7CDA00671585FCC70035619C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = EnglishVideoStreameriPhone/GCSE.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Theta Computer Services Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Prefix.pch";
 				INFOPLIST_FILE = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = GCSE;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=*]" = "";
+				PROVISIONING_PROFILE = "9EC36ED9-1669-427D-940E-35A450FED0D0";
+				"PROVISIONING_PROFILE[sdk=*]" = "9EC36ED9-1669-427D-940E-35A450FED0D0";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

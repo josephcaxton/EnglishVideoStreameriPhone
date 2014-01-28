@@ -48,7 +48,7 @@
     
     // create a toolbar where we can place some buttons, I have subclassed this to remove the default background
     TransparentToolBar* toolbar = [[TransparentToolBar alloc]
-                                   initWithFrame:CGRectMake(250, 0, 165, 45)];
+                                   initWithFrame:CGRectMake(250, 0, 155, 45)];
     
     // create an array for the buttons
     buttons = [[NSMutableArray alloc] initWithCapacity:2];

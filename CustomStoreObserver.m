@@ -236,7 +236,31 @@
 
 -(void)GetUsernameAndPassword{
     //@"If you need to restore your subscriptions on another device, please provide your email address and a password"
-    NSString *myTitle = @"Enter your details";
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Registration"
+                                                        message:[NSString stringWithFormat:@"Enter details"]
+                                                       delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done",nil];
+    
+    [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+    [alertView show];
+    
+    UITextField *utextfield = [alertView textFieldAtIndex:0];
+    utextfield.placeholder = @"EmailAddress";
+    utextfield.tag = 1717;
+    utextfield.enablesReturnKeyAutomatically = NO;
+    [utextfield setKeyboardType:UIKeyboardTypeEmailAddress];
+    [utextfield setDelegate:self];
+    
+    UITextField	*ptextfield = [alertView textFieldAtIndex:1];
+    ptextfield.placeholder = @"Password";
+    ptextfield.tag = 1818;
+    ptextfield.enablesReturnKeyAutomatically = NO;
+    [ptextfield setDelegate:self];
+    
+    alertView.tag = 1313;
+    
+
+   /* NSString *myTitle = @"Enter your details";
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:myTitle message:@"\n \n \n \n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 
     	
@@ -260,7 +284,7 @@
     [ptextfield setDelegate:self];   
     [alertView addSubview:ptextfield];
     
-    alertView.tag = 1313;
+    alertView.tag = 1313; */
 
     	 
     	// Move a little to show up the keyboard

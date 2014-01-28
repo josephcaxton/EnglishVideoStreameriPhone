@@ -121,7 +121,7 @@
         UIImage *LCImage = [[UIImage alloc] initWithContentsOfFile:LCImageLocation];
         
         
-        LCButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        LCButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [LCButton setImage:LCImage forState:UIControlStateNormal];
         LCButton.frame = CGRectMake(35, 190, 250, 50);
         [LCButton addTarget:self action:@selector(WebsitebuttonPressed) forControlEvents:UIControlEventTouchUpInside];
