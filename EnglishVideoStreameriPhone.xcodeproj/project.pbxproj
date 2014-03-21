@@ -1048,7 +1048,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = EnglishVideoStreameriPhone/GCSE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Theta Computer Services Limited";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Theta Computer Services Limited (9RNCM436XC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Theta Computer Services Limited (9RNCM436XC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Prefix.pch";
 				INFOPLIST_FILE = "EnglishVideoStreameriPhone/EnglishVideoStreameriPhone-Info.plist";
@@ -1059,7 +1060,7 @@
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 				);
 				PRODUCT_NAME = GCSE;
-				PROVISIONING_PROFILE = "9EC36ED9-1669-427D-940E-35A450FED0D0";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "9EC36ED9-1669-427D-940E-35A450FED0D0";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
