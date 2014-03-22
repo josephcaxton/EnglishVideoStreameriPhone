@@ -209,7 +209,7 @@ int dontShowPriceList = 0;
 	[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
 	[numberFormatter setLocale:product.priceLocale];
 	
-	UIButton *BuyNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];  
+	UIButton *BuyNow = [UIButton buttonWithType:UIButtonTypeCustom];  
 	
 	//[BuyNow setTitle:@""  forState:UIControlStateNormal];
 	BuyNow.frame = CGRectMake(150, 10, 100, 39);
