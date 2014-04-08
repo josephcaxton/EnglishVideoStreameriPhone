@@ -160,46 +160,18 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
 
 -(void)SubscriptionStatus:(NSString *)DeviceID{
     
-   /* if(SubscriptionStatusData){
-        [SubscriptionStatusData setLength:0];
-    }
-    
-    
-    NSString *Filter =[NSString stringWithString:@"1"];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSString *domain = appDelegate.DomainName;
-    
-    
-    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/ViewSubscriptionStatus",domain];
-    NSURL *url = [NSURL URLWithString:queryString];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
-    
-    NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&filter=%@&",DeviceID,Filter];
-    NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    //NSLog(@"%@",FullString);
-    NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
-    [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
-    unsigned long long postLength = data.length;
-    NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
-    [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
-    
-    [req setHTTPMethod:@"POST"];
-    [req setHTTPBody:data];
-    
-    NSURLConnection *conn;
-    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-    [conn start];
-    if (!conn) {
-        NSLog(@"error while starting the connection");
-    } */
-    
     if(SubscriptionStatusData){
         [SubscriptionStatusData setLength:0];
         
     }
     
+    // If the user did not supply email address when they buy subscription check if they have lost DeviceID
+    NSString *Auth = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCNOAuth"];
+    if ([Auth isEqualToString:@"none"]) {
+        
+        NSString *DeviceIDWhenYouPurchased = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCNOAuthDeviceID"];
+        
+        if([DeviceIDWhenYouPurchased isEqualToString:DeviceID]){
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *deviceID = [prefs stringForKey:@"LCUIID"];
     
@@ -226,9 +198,51 @@ static NSString* const kAnalyticsAccountId = @"UA-32471393-1";
         NSLog(@"error while starting the connection");
     } 
     
+        }
+        else{
+            
+            // DeviceId id not in sync with when user brought LCNOAuthDeviceID
+            [[NSUserDefaults standardUserDefaults] setObject:@"contactsupport" forKey:@"LCNOAuth"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Device not recognised" message:@"You did not supply email address and password when asked during purchase of your subscription, we cannot identify your device. Click help tab below to send email to support by clicking report problem " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+            
+            [alertView show];
+            
+            
+        }
+        
+    }
     
     
+    else{
+
     
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *deviceID = [prefs stringForKey:@"LCUIID"];
+        
+        NSString *AppID = @"58";   // 58 means this is English
+        NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/HasCurrentSubscription",DomainName];
+        NSURL *url = [NSURL URLWithString:queryString];
+        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&CourseID=%@&",deviceID,AppID];
+        NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
+        [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
+        unsigned long long postLength = data.length;
+        NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
+        [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
+        
+        [req setHTTPMethod:@"POST"];
+        [req setHTTPBody:data];
+        
+        NSURLConnection *conn;
+        conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+        if (!conn) {
+            NSLog(@"error while starting the connection");
+        } 
+    }
  
     
     

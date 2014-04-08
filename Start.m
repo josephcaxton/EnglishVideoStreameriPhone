@@ -137,6 +137,19 @@
         [LoginViaLearnersCloud setTarget:self];
         [LoginViaLearnersCloud setAction:@selector(TransferSubscription:)];
         LoginViaLearnersCloud.title = @"Login";
+        NSString *NoAuthkey = @"LCNOAuth";
+        NSString *Auth = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:NoAuthkey];
+        if ([Auth isEqualToString:@"none"]) {
+            LoginViaLearnersCloud.tag  = 999;
+        }
+        else{
+            
+            LoginViaLearnersCloud.tag  = 1;
+            
+        }
+        
+        
+
         self.navigationItem.rightBarButtonItem = LoginViaLearnersCloud;
     }
     
@@ -147,6 +160,7 @@
         [LoginViaLearnersCloud setTarget:self];
         [LoginViaLearnersCloud setAction:@selector(LogoutUser:)];
         LoginViaLearnersCloud.title = @"Logout";
+         LoginViaLearnersCloud.tag  = 2;
         self.navigationItem.rightBarButtonItem = LoginViaLearnersCloud;
         
     }
@@ -155,6 +169,19 @@
     if(appDelegate.FlagToLoginOrLogout == [NSNumber numberWithInt:1]){
         
         appDelegate.FlagToLoginOrLogout = [NSNumber numberWithInt:0];
+        // Check if the user has purchase without supplying email address and password
+        NSString *NoAuthkey = @"LCNOAuth";
+        NSString *Auth = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:NoAuthkey];
+        if ([Auth isEqualToString:@"none"]) {
+            LoginViaLearnersCloud.tag  = 999;
+        }
+        else{
+            
+            LoginViaLearnersCloud.tag  = 1;
+        }
+        
+        
+
         LoginViaLearnersCloud.title = @"Login";
         [self TransferSubscription:LoginViaLearnersCloud];
         
@@ -164,6 +191,7 @@
         
         appDelegate.FlagToLoginOrLogout = [NSNumber numberWithInt:0];
         LoginViaLearnersCloud.title = @"Logout";
+         LoginViaLearnersCloud.tag = 2;
         [self LogoutUser:LoginViaLearnersCloud];
         
     }
@@ -240,7 +268,13 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Login"
                                                             message:[NSString stringWithFormat:@"Enter Login details"]
                                                            delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done",nil];
-        
+        if(LoginViaLearnersCloud.tag == 999){
+            
+            [alertView setTitle:@"Create Multi Device Account"];
+            [alertView setMessage:@"Enter email address and password to create an account or add this subscription to exisiting account"];
+            
+        }
+
         [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
         [alertView show];
         
@@ -262,40 +296,7 @@
         
         
 
-    //NSString *myTitle = @"Enter your details";
-    //UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:myTitle message:@"\n \n \n \n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    
-    
-   /* UsernameText = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 60.0, 260.0, 30.0)];
-    UsernameText.placeholder = @"EmailAddress";
-    UsernameText.tag = 1717;
-    [UsernameText setBackgroundColor:[UIColor whiteColor]];
-    UsernameText.enablesReturnKeyAutomatically = YES;
-    [UsernameText setReturnKeyType:UIReturnKeyDone];
-    [UsernameText setDelegate:self];
-        // Do we have stored UseName if so let add to box
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        NSString *StoredUserName = [prefs stringForKey:@"LCUserName"];
-        if ([StoredUserName length] > 1) {
-            UsernameText.text = StoredUserName;
-        }
-
-    [alertView addSubview:UsernameText];
-    
-    // Adds a password Field
-   PasswordText = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 95.0, 260.0, 30.0)];
-    PasswordText.placeholder = @"Password";
-    PasswordText.tag = 1818;
-    [PasswordText setSecureTextEntry:YES];
-    PasswordText.enablesReturnKeyAutomatically = YES;
-    [PasswordText setBackgroundColor:[UIColor whiteColor]];
-    [PasswordText setReturnKeyType:UIReturnKeyDone];
-    [PasswordText setDelegate:self];   
-    [alertView addSubview:PasswordText];
-    
-    alertView.tag = 1313;
-    [alertView show];*/
-    
+       
     }
 }
 
@@ -346,6 +347,7 @@
         [LoginViaLearnersCloud setTarget:self];
         [LoginViaLearnersCloud setAction:@selector(TransferSubscription:)];
         LoginViaLearnersCloud.title = @"Login";
+        LoginViaLearnersCloud.tag  = 1;
 
         }
     else {
@@ -417,7 +419,7 @@
 
 -(void)SubscriptionTransferServer:(NSString *)DeviceID{
     
-    int ButtonNumber = WhichButton.tag;
+    //int ButtonNumber = WhichButton.tag;
     if(ReponseFromServer){
         [ReponseFromServer setLength:0];
     }
@@ -429,13 +431,13 @@
     appDelegate.SecondThread = [[NSThread alloc]initWithTarget:self selector:@selector(AddProgress) object:nil];
     [appDelegate.SecondThread start];
 
-    if (ButtonNumber == 999) {
+    if (LoginViaLearnersCloud.tag == 999) {
         
-    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/UpdateDeviceID",domain];
+    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/AddAccount",domain];
     NSURL *url = [NSURL URLWithString:queryString];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
-    NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&email=%@&password=%@&",DeviceID,UsernameText.text,PasswordText.text];
+    NSString *FullString = [NSString stringWithFormat:@"deviceID=%@&email=%@&password=%@&",DeviceID,UsernameText.text,PasswordText.text];
     //NSLog(@"%@",DeviceID);
     NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -497,10 +499,10 @@
     
     /* Response from server for Transfer subscription:
       0 = Successfully updated
-     -1 = Error
-     -2 = Error
-     -3 = Error
-     -4 = User does not exist */
+     -1 = Server Side Error
+     -2 = User locked out of silverlight account account
+     -3 = Wrong password supplied ie email and password did not match
+     -4 = Another e-mail already associated with this devideID */
      
     /* Response from Silverlight Authentication
       0 = OK
@@ -562,16 +564,16 @@
         
         //NSLog(@"%i",Returnid);
     
-        int ButtonNumber = WhichButton.tag;
+        //int ButtonNumber = WhichButton.tag;
     
-    if (ButtonNumber == 999) {
+    if (LoginViaLearnersCloud.tag == 999) {
         
     
             if (Returnid == 0) {
         
                 NSError *error;
                 // Report to  analytics
-                if (![[GANTracker sharedTracker] trackEvent:@"User transfer subscription to another device"
+                if (![[GANTracker sharedTracker] trackEvent:@"User create multi device account or add subscription to account"
                                                      action:@"Transfer successful"
                                                       label:@"Transfer successful"
                                                       value:89
@@ -579,21 +581,49 @@
                     NSLog(@"error in trackEvent");
                 }
                 
-                
+                [[NSUserDefaults standardUserDefaults] setObject:@"transfered" forKey:@"LCNOAuth"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 alertView.tag = 4444;
-                [self RefreshSubsciptionStatus:self];
                 [alertView show];
+                 [self ViewFreeVideos:self];
              }
     
-          else if (Returnid < 0){
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"You don't have any running subscription" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            alertView.tag = 4444;
-            [alertView show];
-            
-             }
+            else if (Returnid == -1){
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"Server Side Error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+                [self viewWillAppear:TRUE];
+                
+            }
+            else if (Returnid == -2){
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"Your account is locked out email support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+                [self viewWillAppear:TRUE];
+                
+            }
+            else if (Returnid == -3){
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"Password you supplied for your account is wrong try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+                [self viewWillAppear:TRUE];
+                
+            }
+            else if (Returnid == -4){
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"Another email address is already associated with this subscription" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+                [self viewWillAppear:TRUE];
+                
+            }
+        
+        
 
      }
     else {

@@ -225,7 +225,8 @@
     else
     {
     
-   AlertTitle = @"If you need to restore your subscriptions on another device, you will need to provide an email address and a password. Do you want to enter email address and a password?";
+        AlertTitle = @"You can now create a Multi-Device Account. If you do not do this you will only be able to access your subscriptions on this device. This account will allow you to access your subscription on all your other devices. Do you want to create an account?";
+        
     }
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AlertTitle message:@"\n" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     alertView.tag = 1212;
@@ -425,6 +426,14 @@
        
         EmailAddress = @"";
         Password = @"";
+        // User did not supply EmailAdress so store info in UserDefaults
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:@"none" forKey:@"LCNOAuth"];
+        [prefs setObject:MyDeviceId forKey:@"LCNOAuthDeviceID"];
+        [prefs synchronize];
+        
+        
+
     }
         
              
@@ -440,7 +449,7 @@
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
     VerificationAppID = @"4"; //English iPhone
-    
+    //VerificationAppID = @"99"; // test
     NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@&AppID=%@",FinalProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password,VerificationAppID];
     
     /*NSString * encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
